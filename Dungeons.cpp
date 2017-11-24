@@ -11,6 +11,10 @@ using namespace std;
 		name = n;
 	}
 
+	void Character::setDescription(string d){
+		description = d;
+	}
+
 	void Character::setAttack(int a){
 		attack = a;
 	}
@@ -36,6 +40,10 @@ using namespace std;
 		return name;
 	}
 
+	string Character::getDescription(){
+		return description;
+	}
+
 	int Character::getAttack(){
 		return attack;
 	}
@@ -56,64 +64,14 @@ using namespace std;
 		return gold;
 	}
 
-	//defining Room accessors
-	void Room::setName(string n){
-		name = n;
-	}
-
-	void Room::setDescription(string d){
-		description = d;
-	}
-
-	void Room::setNorth(bool no){
-		north = no;
-	}
-
-	void Room::setEast(bool e){
-		east = e;
-	}
-
-	void Room::setSouth(bool s){
-		south = s;
-	}
-
-	void Room::setWest(bool w){
-		west = w;
-	}
-
-	//defining Room mutators
-	string Room::getName(){
-		return name;
-	}
-
-	string Room::getDescription(){
-		return description;
-	}
-
-	bool Room::getNorth(){
-		return north;
-	}
-
-	bool Room::getEast(){
-		return east;
-	}
-
-	bool Room::getSouth(){
-		return south;
-	}
-
-	bool Room::getWest(){
-		return west;
-	}
-
-	void Room::describeRoom(){
+	void Character::describeCharacter(){
 		cout << "This is " << name << endl;
 		cout << description << endl;
 	}
 
 	//defining battle function
 	void battle(Character& Player, Character& Monster){
-		cout << Player.getName() << ", you are approached by a " << Monster.getName() << endl;
+		cout << endl << Player.getName() << ", you are approached by a " << Monster.getName() << endl;
 
 		int x = 0;
 		while (x == 0){
@@ -123,7 +81,7 @@ using namespace std;
 				cout << "The " << Monster.getName() << " attacked you!" << endl;
 				int netA = Monster.getAttack() - Player.getDefense();
 				if (netA < 0){
-					netA = 0;
+					netA = 1;
 				}
 				Player.setHealth(Player.getHealth() - netA);
 				if (Player.getHealth() <= 0){
@@ -145,7 +103,7 @@ using namespace std;
 				cout << "You attacked the " << Monster.getName() << "!" << endl;
 				int netA = Player.getAttack() - Monster.getDefense();
 				if (netA < 0){
-					netA = 0;
+					netA = 1;
 				}
 				Monster.setHealth(Monster.getHealth() - netA);
 				if (Monster.getHealth() <= 0){
@@ -171,11 +129,13 @@ using namespace std;
 		if (Player.getHealth() <= 0){
 			cout << "The " << Monster.getName() << " killed you!" << endl;
 			cout << "Game Over" << endl;
+			cout << "----------------------------------------------------" << endl;;
 		}	
 
 		else if (Monster.getHealth() <= 0){
 			cout << "You killed the " << Monster.getName() << "!" << endl;
 			cout << "Congratulations, " << Player.getName() << "! You won the game!" << endl;
+			cout << "----------------------------------------------------" << endl;;			
 		}
 	}
 
@@ -223,11 +183,11 @@ using namespace std;
 		Player.setHealth(Player.getHealth() + item.getHealth());
 		Player.setSpeed(Player.getSpeed() + item.getSpeed());		
 		Player.setGold(Player.getGold() - item.getGold());
-		cout << "Thank you!" << endl;
+		cout << "Thank you!" << endl << endl;
 	}
 
 	void shop(Character& Player, Character& item1, Character& item2, Character& item3){
-		cout << "Welcome to the shop!" << endl;
+		cout << endl << "Welcome to the shop!" << endl;
 		cout << "Looks like you have " << Player.getGold() << " Gold" << endl;
 		if (Player.getGold() <= 0){
 			cout << "Go get more Gold!" << endl;

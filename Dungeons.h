@@ -4,6 +4,7 @@ using namespace std;
 class Character{
 public:
 	string name;
+	string description;
 	int attack;
 	int defense;
 	int health;
@@ -11,6 +12,7 @@ public:
 	int gold;
 
 	void setName(string n);
+	void setDescription(string d);
 	void setAttack(int a);
 	void setDefense(int def);
 	void setHealth(int h);
@@ -18,39 +20,16 @@ public:
 	void setGold(int g);
 
 	string getName();
+	string getDescription();
 	int getAttack();
 	int getDefense();
 	int getHealth();
 	int getSpeed();
 	int getGold();
+	void describeCharacter();
 
 	~Character(){
 	}
-};
-
-class Room{
-public:
-	string name;
-	string description;
-	bool north;
-	bool east;
-	bool south;
-	bool west;
-
-	void setName(string n);
-	void setDescription(string d);
-	void setNorth(bool no);
-	void setEast(bool s);
-	void setSouth(bool e);
-	void setWest(bool w);
-
-	string getName();
-	string getDescription();
-	bool getNorth();
-	bool getEast();
-	bool getSouth();
-	bool getWest();
-	void describeRoom();
 };
 
 void battle(Character&, Character&);
