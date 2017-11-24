@@ -9,13 +9,14 @@ int main(){
 	//collect user input
 	cout << "What is your name?" << endl; 
 	getline(cin, n);
+	cout << "----------------------------------------------------" << endl;
 
 	Character Player;
 	Player.setName(n);
 	Player.setAttack(5);
 	Player.setDefense(5);
 	Player.setHealth(5);
-	Player.setSpeed(10);
+	Player.setSpeed(5);
 	Player.setGold(10);
 
 	Character greatSword;
@@ -76,6 +77,7 @@ int main(){
 
 			string i;
 			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;			
 
 			if (i == "North"){
 				r = "3";
@@ -95,6 +97,7 @@ int main(){
 
 			string i;
 			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;
 
 			if (i == "East"){
 				r = "4";
@@ -117,6 +120,7 @@ int main(){
 
 			string i;
 			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;
 
 			if (i == "North"){
 				r = "4";
@@ -142,6 +146,7 @@ int main(){
 
 			string i;
 			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;
 
 			if (i == "South"){
 				r = "2";

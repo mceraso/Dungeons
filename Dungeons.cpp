@@ -113,13 +113,29 @@ using namespace std;
 
 	//defining battle function
 	void battle(Character& Player, Character& Monster){
-		cout << endl << Player.getName() << ", you are approached by a " << Monster.getName() << endl << endl;
+		cout << Player.getName() << ", you are approached by a " << Monster.getName() << endl;
 
-		while (Player.getHealth() > 0 or Monster.getHealth() > 0){
+		int x = 0;
+		while (x == 0){
+			bool netS = false;
+			if (Monster.getSpeed() >= Player.getSpeed()){
+				netS = true;
+				cout << "The " << Monster.getName() << " attacked you!" << endl;
+				int netA = Monster.getAttack() - Player.getDefense();
+				if (netA < 0){
+					netA = 0;
+				}
+				Player.setHealth(Player.getHealth() - netA);
+				if (Player.getHealth() <= 0){
+					break;
+				}				
+			}
+
 			cout << "What do you do?" << endl;
 			cout << "Attack or Run" << endl;
 			string i;
 			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;;
 
 			if (i == "Run"){
 				cout << "You got away safely!" << endl;
@@ -139,16 +155,17 @@ using namespace std;
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
-
-			cout << "The " << Monster.getName() << " attacked you!" << endl;
-			int netA = Monster.getAttack() - Player.getDefense();
-			if (netA < 0){
-				netA = 0;
-			}
-			Player.setHealth(Player.getHealth() - netA);
-			if (Player.getHealth() <= 0){
-				break;
-			}
+			if (netS == false){
+				cout << "The " << Monster.getName() << " attacked you!" << endl;
+				int netA = Monster.getAttack() - Player.getDefense();
+				if (netA <= 0){
+					netA = 1;
+				}
+				Player.setHealth(Player.getHealth() - netA);
+				if (Player.getHealth() <= 0){
+					break;
+				}
+			}	
 		}
 
 		if (Player.getHealth() <= 0){
@@ -206,12 +223,12 @@ using namespace std;
 		Player.setHealth(Player.getHealth() + item.getHealth());
 		Player.setSpeed(Player.getSpeed() + item.getSpeed());		
 		Player.setGold(Player.getGold() - item.getGold());
-		cout << "Thank you!" << endl << endl;
+		cout << "Thank you!" << endl;
 	}
 
 	void shop(Character& Player, Character& item1, Character& item2, Character& item3){
 		cout << "Welcome to the shop!" << endl;
-		cout << "Looks like you have " << Player.getGold() << " Gold" << endl << endl;
+		cout << "Looks like you have " << Player.getGold() << " Gold" << endl;
 		if (Player.getGold() <= 0){
 			cout << "Go get more Gold!" << endl;
 			return;
@@ -226,6 +243,7 @@ using namespace std;
 
 			string i;
 			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;			
 
 			if (i == item1.getName()){
 				playerBought(Player, item1);
