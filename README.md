@@ -18,7 +18,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 [x] Player wins game after killing the Monster. Player loses the game if killed by the Monster.
 
 # Player Story Objectives:
-[] Player needs to think about Speed because Speed determines whether the Player or the Monster attacks first.
+[x] Player needs to think about Speed because Speed determines whether the Player or the Monster attacks first.
 
 [] Player is able to navigate a 3x3 grid with more Shops and Battle events. There are more than 3 Items and more than 1 Monster
 
@@ -36,4 +36,4 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 [] Player is restricted access to certain Rooms until after acquiring a certain Item
 
-[] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
+[x] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
