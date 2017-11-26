@@ -19,23 +19,31 @@ int main(){
 	Player.setDefense(5);
 	Player.setHealth(5);
 	Player.setSpeed(5);
-	Player.setGold(10);
+	Player.setGold(20);
+	Character backpack[10];
+	Character equipped[3];
 
 	//Define Item Characters
 	Character greatSword;
-	greatSword.setName("Great Sword");
-	greatSword.setAttack(15);
+	greatSword.setName("Sword");
+	greatSword.setAttack(5);
 	greatSword.setDefense(0);
 	greatSword.setHealth(0);
-	greatSword.setSpeed(-5);
+	greatSword.setSpeed(0);
 	greatSword.setGold(10);
+	//addBackpack(backpack, greatSword);
+	//addEquipped(backpack, equipped);
+	//deleteBackpack(backpack);
+	/*for (int i=0; i<10; i++){
+		cout << backpack[i].name << endl;
+	}*/
 
 	Character mightyShield;
-	mightyShield.setName("Mighty Shield");
+	mightyShield.setName("Shield");
 	mightyShield.setAttack(0);
-	mightyShield.setDefense(15);
+	mightyShield.setDefense(5);
 	mightyShield.setHealth(0);
-	mightyShield.setSpeed(-5);
+	mightyShield.setSpeed(0);
 	mightyShield.setGold(10);
 
 	Character battleSet;
@@ -44,7 +52,7 @@ int main(){
 	battleSet.setDefense(5);
 	battleSet.setHealth(0);
 	battleSet.setSpeed(5);
-	battleSet.setGold(10);
+	battleSet.setGold(25);
 
 	//Define Monster Characters
 	Character Monster;
@@ -89,7 +97,10 @@ int main(){
 			}
 			else if (i == "East"){
 				r = "2";
-			} 
+			}
+			else if (i == "Equip"){
+				addEquipped(backpack, equipped);
+			}  
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
@@ -110,6 +121,9 @@ int main(){
 			else if (i == "South"){
 				r = "1";
 			} 
+			else if (i == "Equip"){
+				addEquipped(backpack, equipped);
+			}  
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
@@ -118,7 +132,7 @@ int main(){
 
 		if (r == "2"){
 			Town.describeCharacter();
-			shop(Player, greatSword, mightyShield, battleSet);
+			shop(Player, greatSword, mightyShield, battleSet, backpack);
 
 			cout << "Where do you go?" << endl;			
 			cout << "North or West" << endl;
@@ -133,6 +147,9 @@ int main(){
 			else if (i == "West"){
 				r = "1";
 			} 
+			else if (i == "Equip"){
+				addEquipped(backpack, equipped);
+			}  
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
@@ -159,6 +176,9 @@ int main(){
 			else if (i == "West"){
 				r = "3";
 			} 
+			else if (i == "Equip"){
+				addEquipped(backpack, equipped);
+			}  
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}

@@ -141,6 +141,10 @@ using namespace std;
 
 	void playerBought(Character& Player, Character& item){
 		cout << "You bought the " << item.getName() << "!" << endl;
+		cout << "Gold is decreased by " << item.getGold() << "." << endl;
+		Player.setGold(Player.getGold() - item.getGold());
+
+		cout << "When equipped, " << endl;
 		if (item.getAttack() < 0){
 			cout << "Attack is decreased by " << item.getAttack() << "." << endl;
 		}
@@ -176,17 +180,24 @@ using namespace std;
 		}
 		else {
 			cout << "Speed is unchanged." << endl;
-		}		
-		cout << "Gold is decreased by " << item.getGold() << "." << endl;
-		Player.setAttack(Player.getAttack() + item.getAttack());
-		Player.setDefense(Player.getDefense() + item.getDefense());		
-		Player.setHealth(Player.getHealth() + item.getHealth());
-		Player.setSpeed(Player.getSpeed() + item.getSpeed());		
-		Player.setGold(Player.getGold() - item.getGold());
+		}			
 		cout << "Thank you!" << endl << endl;
 	}
 
-	void shop(Character& Player, Character& item1, Character& item2, Character& item3){
+	void addBackpack(Character*backpack[10], Character& item){
+		for (int i = 0; i < 10; i++){
+			if (backpack[i]->name == ""){
+				backpack[i] = &item;
+				return;
+			}
+			else{
+				cout << "You have no room in your backpack!" << endl;
+				return;
+			}
+		}
+	}
+
+	void shop(Character& Player, Character& item1, Character& item2, Character& item3, Character*backpack[10]){
 		cout << endl << "Welcome to the shop!" << endl;
 		cout << "Looks like you have " << Player.getGold() << " Gold" << endl;
 		if (Player.getGold() <= 0){
@@ -207,14 +218,18 @@ using namespace std;
 
 			if (i == item1.getName()){
 				playerBought(Player, item1);
+				addBackpack(&backpack[10], item1);
+				cout << &backpack;
 				break;
 			}
 			else if (i == item2.getName()){
 				playerBought(Player, item2);
+				addBackpack(&backpack[10], item2);
 				break;
 			}
 			else if (i == item3.getName()){
 				playerBought(Player, item3);
+				addBackpack(&backpack[10], item3);
 				break;
 			}					
 			else {
@@ -223,3 +238,96 @@ using namespace std;
 
 		}
 	}
+
+	void deleteBackpack(Character backpack[10]){
+		cout << "What would you like to throwaway?" << endl;
+		for (int i = 0; i < 10; i++){
+			if (backpack[i].name == ""){
+				cout << "-empty slot-" << endl;
+			}
+			else {
+				cout << backpack[i].name << endl;
+			}
+		}
+		string a;
+		getline(cin, a);
+		cout << "----------------------------------------------------" << endl;
+		Character blank;
+
+		for (int i = 0; i < 10; i++){
+			if (a == backpack[i].name){
+				backpack[i] = blank;
+				cout << "You threw away " << a << "!" << endl;
+				return;
+			}
+			else{
+				cout << "That's not in your backpack anyway!" << endl;
+				return;
+			}
+		}		
+	}
+
+	void addEquipped(Character backpack[10], Character equipped[3]){
+		cout << "What would you like to equip?" << endl;
+		for (int i = 0; i < 10; i++){
+			if (backpack[i].name == ""){
+				cout << "-empty slot-" << endl;
+			}
+			else {
+				cout << backpack[i].name << endl;
+			}
+		}
+		string a;
+		getline(cin, a);
+		cout << "----------------------------------------------------" << endl;			
+
+		for (int i = 0; i < 10; i++){
+			if (a == backpack[i].name){
+				Character e = backpack[i];
+				for (int i = 0; i < 3; i++){
+					if (equipped[i].name == ""){
+						equipped[i] = e;
+						cout << "You equipped " << a << "!" << endl;
+						return;
+					}
+					else{
+						cout << "You cannot equip anything else!" << endl;
+						return;
+					}
+				}
+			}
+			else{
+				cout << "That's not in your backpack!" << endl;
+				return;
+			}
+		}
+	}	
+
+	void deleteEquipped(Character equipped[3]){
+		cout << "What would you like to unequip?" << endl;
+		for (int i = 0; i < 3; i++){
+			if (equipped[i].name == ""){
+				cout << "-empty slot-" << endl;
+			}
+			else {
+				cout << equipped[i].name << endl;
+			}
+		}
+		string a;
+		getline(cin, a);
+		cout << "----------------------------------------------------" << endl;
+		Character blank;
+
+		for (int i = 0; i < 3; i++){
+			if (a == equipped[i].name){
+				equipped[i] = blank;
+				cout << "You unequiped " << a << "!" << endl;
+				return;
+			}
+			else{
+				cout << "That's not equipped anyway!" << endl;
+				return;
+			}
+		}		
+	}		
+	

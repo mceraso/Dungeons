@@ -26,6 +26,7 @@ public:
 	int getHealth();
 	int getSpeed();
 	int getGold();
+	
 	void describeCharacter();
 
 	~Character(){
@@ -34,4 +35,8 @@ public:
 
 void battle(Character&, Character&);
 void playerBought(Character&, Character&);
-void shop(Character&, Character&, Character&, Character&);
+void shop(Character&, Character&, Character&, Character&, Character backpack[10]);
+void addBackpack(Character backpack[10], Character&);
+void deleteBackpack(Character backpack[10]);
+void addEquipped(Character backpack[10], Character equipped[3]);
+void deleteEquipped(Character equipped[3]);
