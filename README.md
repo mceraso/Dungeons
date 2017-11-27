@@ -38,7 +38,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 [x] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
 
-# Things Learned
+# Things Learned:
 [x] while-if control loops to keep player from inputting unsupported choices
 
 [x] creation of header file, class and function definition file, and main function file with communication among them
