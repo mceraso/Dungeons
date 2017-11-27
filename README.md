@@ -22,7 +22,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 [] Player is able to navigate a 3x3 grid with more Shops and Battle events. There are more than 3 Items and more than 1 Monster
 
-[] Player is able to afford more than 1 Item from the Shop either through being given more Gold at the start or finding more Gold in the Level
+[x] Player is able to afford more than 1 Item from the Shop either through being given more Gold at the start or finding more Gold in the Level
 
 [] Player is able to equip and de-equip Items. There are limits to what can be equipped at the same time
 
@@ -37,3 +37,16 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 [] Player is restricted access to certain Rooms until after acquiring a certain Item
 
 [x] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
+
+# Things Learned
+[x] while-if control loops to keep player from inputting unsupported choices
+
+[x] creation of header file, class and function definition file, and main function file with communication among them
+
+[x] creation of class with public variables
+
+[x] passing multiple class instances as function arguments
+
+[x] passing function arguments by reference to affect variables declared in main
+
+[] passing arrays as function arguments
