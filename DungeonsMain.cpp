@@ -7,7 +7,7 @@ int main(){
 	string n;
 
 	//collect user input
-	cout << "----------------------------------------------------" << endl;;	
+	cout << "----------------------------------------------------" << endl;	
 	cout << "What is your name?" << endl; 
 	getline(cin, n);
 	cout << "----------------------------------------------------" << endl;
@@ -100,7 +100,13 @@ int main(){
 			}
 			else if (i == "Equip"){
 				addEquipped(backpack, equipped);
-			}  
+			}
+			else if (i == "Unequip"){
+				deleteEquipped(equipped);
+			}
+			else if (i== "Throwaway"){
+				deleteBackpack(backpack);
+			}			  
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
@@ -123,16 +129,24 @@ int main(){
 			} 
 			else if (i == "Equip"){
 				addEquipped(backpack, equipped);
-			}  
+			}
+			else if (i == "Unequip"){
+				deleteEquipped(equipped);
+			}
+			else if (i== "Throwaway"){
+				deleteBackpack(backpack);
+			}			  
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
-
 		}
 
 		if (r == "2"){
 			Town.describeCharacter();
 			shop(Player, greatSword, mightyShield, battleSet, backpack);
+			/*for (int i=0; i<10; i++){
+				cout << backpack[i].name << endl;
+			}*/
 
 			cout << "Where do you go?" << endl;			
 			cout << "North or West" << endl;
@@ -146,10 +160,19 @@ int main(){
 			}
 			else if (i == "West"){
 				r = "1";
-			} 
+			}
 			else if (i == "Equip"){
 				addEquipped(backpack, equipped);
-			}  
+				/*for (int i=0; i<3; i++){
+					cout << equipped[i].name << endl;
+				}*/				
+			}
+			else if (i == "Unequip"){
+				deleteEquipped(equipped);
+			}
+			else if (i== "Throwaway"){
+				deleteBackpack(backpack);
+			}
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
@@ -179,6 +202,12 @@ int main(){
 			else if (i == "Equip"){
 				addEquipped(backpack, equipped);
 			}  
+			else if (i == "Unequip"){
+				deleteEquipped(equipped);
+			}
+			else if (i== "Throwaway"){
+				deleteBackpack(backpack);
+			}			
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}

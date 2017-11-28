@@ -139,7 +139,7 @@ using namespace std;
 		}
 	}
 
-	void playerBought(Character& Player, Character& item){
+	void playerBought(Character& Player, Character item){
 		cout << "You bought the " << item.getName() << "!" << endl;
 		cout << "Gold is decreased by " << item.getGold() << "." << endl;
 		Player.setGold(Player.getGold() - item.getGold());
@@ -184,20 +184,7 @@ using namespace std;
 		cout << "Thank you!" << endl << endl;
 	}
 
-	void addBackpack(Character*backpack[10], Character& item){
-		for (int i = 0; i < 10; i++){
-			if (backpack[i]->name == ""){
-				backpack[i] = &item;
-				return;
-			}
-			else{
-				cout << "You have no room in your backpack!" << endl;
-				return;
-			}
-		}
-	}
-
-	void shop(Character& Player, Character& item1, Character& item2, Character& item3, Character*backpack[10]){
+	void shop(Character& Player, Character item1, Character item2, Character item3, Character backpack[10]){
 		cout << endl << "Welcome to the shop!" << endl;
 		cout << "Looks like you have " << Player.getGold() << " Gold" << endl;
 		if (Player.getGold() <= 0){
@@ -211,32 +198,53 @@ using namespace std;
 			cout << item1.getName() << " for " << item1.getGold() << " Gold" << endl;
 			cout << item2.getName() << " for " << item2.getGold() << " Gold" << endl;
 			cout << item3.getName() << " for " << item3.getGold() << " Gold" << endl;
+			cout << "Nothing" << endl;
 
-			string i;
-			getline(cin, i);
+			string a;
+			getline(cin, a);
 			cout << "----------------------------------------------------" << endl;			
 
-			if (i == item1.getName()){
+			for (int i = 0; i < 3; i++){
+				if (a == backpack[i].name){
+					cout << "You already have that!" << endl;
+					return;
+				}
+			}
+
+			if (a == item1.getName()){
 				playerBought(Player, item1);
-				addBackpack(&backpack[10], item1);
-				cout << &backpack;
+				addBackpack(backpack, item1);
 				break;
 			}
-			else if (i == item2.getName()){
+			else if (a == item2.getName()){
 				playerBought(Player, item2);
-				addBackpack(&backpack[10], item2);
+				addBackpack(backpack, item2);
 				break;
 			}
-			else if (i == item3.getName()){
+			else if (a == item3.getName()){
 				playerBought(Player, item3);
-				addBackpack(&backpack[10], item3);
+				addBackpack(backpack, item3);
 				break;
-			}					
+			}
+			else if (a == "Nothing"){
+				cout << "Thank you!" << endl << endl;
+				break;
+			}										
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
 
 		}
+	}
+
+	void addBackpack(Character backpack[10], Character item){
+		for (int i = 0; i < 10; i++){
+			if (backpack[i].name == "") {
+				backpack[i] = item;
+				return;
+			}
+		}
+		cout << "You have no room in your backpack!" << endl;
 	}
 
 	void deleteBackpack(Character backpack[10]){
@@ -260,11 +268,8 @@ using namespace std;
 				cout << "You threw away " << a << "!" << endl;
 				return;
 			}
-			else{
-				cout << "That's not in your backpack anyway!" << endl;
-				return;
-			}
 		}		
+		cout << "That's not in your backpack anyway!" << endl;
 	}
 
 	void addEquipped(Character backpack[10], Character equipped[3]){
@@ -281,6 +286,13 @@ using namespace std;
 		getline(cin, a);
 		cout << "----------------------------------------------------" << endl;			
 
+		for (int i = 0; i < 3; i++){
+			if (a == equipped[i].name){
+				cout << "That's already equipped!" << endl;
+				return;
+			}
+		}
+
 		for (int i = 0; i < 10; i++){
 			if (a == backpack[i].name){
 				Character e = backpack[i];
@@ -290,17 +302,12 @@ using namespace std;
 						cout << "You equipped " << a << "!" << endl;
 						return;
 					}
-					else{
-						cout << "You cannot equip anything else!" << endl;
-						return;
-					}
 				}
-			}
-			else{
-				cout << "That's not in your backpack!" << endl;
+				cout << "You cannot equip anything else!" << endl;
 				return;
 			}
 		}
+		cout << "That's not in your backpack!" << endl;
 	}	
 
 	void deleteEquipped(Character equipped[3]){
@@ -324,10 +331,7 @@ using namespace std;
 				cout << "You unequiped " << a << "!" << endl;
 				return;
 			}
-			else{
-				cout << "That's not equipped anyway!" << endl;
-				return;
-			}
-		}		
+		}	
+		cout << "That's not equipped anyway!" << endl;	
 	}		
 	
