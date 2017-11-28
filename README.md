@@ -24,7 +24,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 [x] Player is able to afford more than 1 Item from the Shop either through being given more Gold at the start or finding more Gold in the Level
 
-[] Player is able to equip and de-equip Items. There are limits to what can be equipped at the same time
+[x] Player is able to equip and de-equip Items. There are limits to what can be equipped at the same time
 
 [] Player can choose to use an Item during Battle. Some items are un-equipable but can be used in Battle
 
@@ -49,4 +49,4 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 [x] passing function arguments by reference to affect variables declared in main
 
-[] passing arrays as function arguments
+[x] passing arrays as function arguments
