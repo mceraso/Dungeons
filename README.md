@@ -20,6 +20,8 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 # Player Story Objectives:
 [] Equipped items affect Player performance in Battle
 
+[] Battle events incorporate randomness / probability in monster action
+
 [x] Player needs to think about Speed because Speed determines whether the Player or the Monster attacks first.
 
 [] Player is able to navigate a 3x3 grid with more Shops and Battle events. There are more than 3 Items and more than 1 Monster
@@ -62,3 +64,5 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 [] array.fill() and array.swap() (monster attack dynamics)
 
 [] namespace creation (game wrapper / workspace)
+
+[] randomness in battle event: https://stackoverflow.com/questions/23055585/program-with-probability
