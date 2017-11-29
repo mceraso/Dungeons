@@ -40,6 +40,8 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 [x] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
 
+[] Player is able to obtain a backpack with unlimited capacity
+
 # Things Learned:
 [x] while-if control loops to keep player from inputting unsupported choices
 
@@ -52,3 +54,11 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 [x] passing function arguments by reference to affect variables declared in main
 
 [x] passing arrays as function arguments
+
+[] enum integration (grid creation tool?)
+
+[] vectors (unlimited capacity backpack)
+
+[] array.fill() and array.swap() (monster attack dynamics)
+
+[] namespace creation (game wrapper / workspace)
