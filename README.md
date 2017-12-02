@@ -18,7 +18,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 [x] Player wins game after killing the Monster. Player loses the game if killed by the Monster.
 
 # Player Story Objectives:
-[] Equipped items affect Player performance in Battle
+[x] Equipped items affect Player performance in Battle
 
 [] Battle events incorporate randomness / probability in monster action
 
