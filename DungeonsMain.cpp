@@ -14,7 +14,7 @@ int main(){
 
 	//Define Player Character
 	Character Player;
-	Player.setName(n);
+	Player.name = n;
 	Player.setAttack(5);
 	Player.setDefense(5);
 	Player.setHealth(5);
@@ -25,7 +25,7 @@ int main(){
 
 	//Define Item Characters
 	Character greatSword;
-	greatSword.setName("Sword");
+	greatSword.name = "Sword";
 	greatSword.setAttack(5);
 	greatSword.setDefense(0);
 	greatSword.setHealth(0);
@@ -39,7 +39,7 @@ int main(){
 	}*/
 
 	Character mightyShield;
-	mightyShield.setName("Shield");
+	mightyShield.name = "Shield";
 	mightyShield.setAttack(0);
 	mightyShield.setDefense(5);
 	mightyShield.setHealth(0);
@@ -47,7 +47,7 @@ int main(){
 	mightyShield.setGold(10);
 
 	Character battleSet;
-	battleSet.setName("Battle Set");
+	battleSet.name = "Battle Set";
 	battleSet.setAttack(5);
 	battleSet.setDefense(5);
 	battleSet.setHealth(0);
@@ -56,7 +56,7 @@ int main(){
 
 	//Define Monster Characters
 	Character Monster;
-	Monster.setName("Monster");
+	Monster.name = "Monster";
 	Monster.setAttack(10);
 	Monster.setDefense(5);
 	Monster.setHealth(15);
@@ -80,6 +80,11 @@ int main(){
 	Forest.setDescription("There is something ominous about the forest today...");
 
 	string r = "1";
+
+//Create Character Matrix of Rooms
+//Create function with matrix argument that auto-handles the navigation	
+//Use booleans to determine when a room has a battle or shop
+//Function should sucessfully create 2x2, 3x3, and 4x4 maps
 
 	while(Player.getHealth() > 0 or Monster.getHealth() > 0){
 
@@ -180,7 +185,7 @@ int main(){
 
 		if (r == "4"){
 			Forest.describeCharacter();
-			battle(Player, Monster);
+			battle(Player, Monster, equipped);
 
 			if (Player.getHealth() <= 0 or Monster.getHealth() <= 0){
 				break;

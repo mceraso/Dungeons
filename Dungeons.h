@@ -33,7 +33,7 @@ public:
 	}
 };
 
-void battle(Character&, Character&);
+void battle(Character&, Character&, Character equipped[3]);
 void playerBought(Character&, Character);
 void shop(Character&, Character, Character, Character, Character backpack[10]);
 void addBackpack(Character backpack[10], Character);

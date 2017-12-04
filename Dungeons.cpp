@@ -70,21 +70,33 @@ using namespace std;
 	}
 
 	//defining battle function
-	void battle(Character& Player, Character& Monster){
-		cout << endl << Player.getName() << ", you are approached by a " << Monster.getName() << endl;
+	void battle(Character& Player, Character& Monster, Character equipped[3]){
+		cout << endl << Player.name << ", you are approached by a " << Monster.getName() << endl;
+
+		int eA = Player.getAttack();
+		int eD = Player.getDefense();
+		int eS = Player.getSpeed();
+		int eH = Player.getHealth();
+		for (int n = 0; n < 3; n ++){
+			eA += equipped[n].getAttack();
+			eD += equipped[n].getDefense();
+			eS += equipped[n].getSpeed();
+			eH += equipped[n].getHealth();
+		}
+
 
 		int x = 0;
 		while (x == 0){
 			bool netS = false;
-			if (Monster.getSpeed() >= Player.getSpeed()){
+			if (Monster.getSpeed() >= eS){
 				netS = true;
 				cout << "The " << Monster.getName() << " attacked you!" << endl;
-				int netA = Monster.getAttack() - Player.getDefense();
+				int netA = Monster.getAttack() - eD;
 				if (netA < 0){
 					netA = 1;
 				}
-				Player.setHealth(Player.getHealth() - netA);
-				if (Player.getHealth() <= 0){
+				eH -= netA;
+				if (eH <= 0){
 					break;
 				}				
 			}
@@ -101,7 +113,7 @@ using namespace std;
 			}
 			else if (i == "Attack"){
 				cout << "You attacked the " << Monster.getName() << "!" << endl;
-				int netA = Player.getAttack() - Monster.getDefense();
+				int netA = eA - Monster.getDefense();
 				if (netA < 0){
 					netA = 1;
 				}
@@ -115,21 +127,22 @@ using namespace std;
 			}
 			if (netS == false){
 				cout << "The " << Monster.getName() << " attacked you!" << endl;
-				int netA = Monster.getAttack() - Player.getDefense();
+				int netA = Monster.getAttack() - eD;
 				if (netA <= 0){
 					netA = 1;
 				}
-				Player.setHealth(Player.getHealth() - netA);
-				if (Player.getHealth() <= 0){
+				eH -= netA;
+				if (eH <= 0){
 					break;
 				}
 			}	
 		}
 
-		if (Player.getHealth() <= 0){
+		if (eH <= 0){
 			cout << "The " << Monster.getName() << " killed you!" << endl;
 			cout << "Game Over" << endl;
 			cout << "----------------------------------------------------" << endl;;
+			Player.health = eH;
 		}	
 
 		else if (Monster.getHealth() <= 0){
