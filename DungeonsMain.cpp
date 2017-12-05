@@ -6,7 +6,7 @@ int main(){
 
 	string n;
 
-	//collect user input
+	//Get player's name
 	cout << "----------------------------------------------------" << endl;	
 	cout << "What is your name?" << endl; 
 	getline(cin, n);
@@ -14,7 +14,7 @@ int main(){
 
 	//Define Player Character
 	Character Player;
-	Player.name = n;
+	Player.setName(n);
 	Player.setAttack(5);
 	Player.setDefense(5);
 	Player.setHealth(5);
@@ -25,21 +25,15 @@ int main(){
 
 	//Define Item Characters
 	Character greatSword;
-	greatSword.name = "Sword";
+	greatSword.setName("Sword");
 	greatSword.setAttack(5);
 	greatSword.setDefense(0);
 	greatSword.setHealth(0);
 	greatSword.setSpeed(0);
 	greatSword.setGold(10);
-	//addBackpack(backpack, greatSword);
-	//addEquipped(backpack, equipped);
-	//deleteBackpack(backpack);
-	/*for (int i=0; i<10; i++){
-		cout << backpack[i].name << endl;
-	}*/
 
 	Character mightyShield;
-	mightyShield.name = "Shield";
+	mightyShield.setName("Shield");
 	mightyShield.setAttack(0);
 	mightyShield.setDefense(5);
 	mightyShield.setHealth(0);
@@ -47,7 +41,7 @@ int main(){
 	mightyShield.setGold(10);
 
 	Character battleSet;
-	battleSet.name = "Battle Set";
+	battleSet.setName("Battle Set");
 	battleSet.setAttack(5);
 	battleSet.setDefense(5);
 	battleSet.setHealth(0);
@@ -56,7 +50,7 @@ int main(){
 
 	//Define Monster Characters
 	Character Monster;
-	Monster.name = "Monster";
+	Monster.setName("Monster");
 	Monster.setAttack(10);
 	Monster.setDefense(5);
 	Monster.setHealth(15);
@@ -79,145 +73,109 @@ int main(){
 	Forest.setName("the Forest");
 	Forest.setDescription("There is something ominous about the forest today...");
 
-	string r = "1";
+	Character Junkyard;
+	Junkyard.setName("the Junkyard");
+	Junkyard.setDescription("One man's trash is another man's treasure.");
 
-//Create Character Matrix of Rooms
-//Create function with matrix argument that auto-handles the navigation	
-//Use booleans to determine when a room has a battle or shop
-//Function should sucessfully create 2x2, 3x3, and 4x4 maps
+	Character Vineyard;
+	Vineyard.setName("the Vineyard");
+	Vineyard.setDescription("It's nice. They make wine here.");
 
-	while(Player.getHealth() > 0 or Monster.getHealth() > 0){
+	//set dimensions of room matrix
+	const int xMax = 3;
+	const int yMax = 3;
 
-		if (r == "1"){
-			Home.describeCharacter();
-			cout << "Where do you go?" << endl;
-			cout << "North or East" << endl;
+	//add rooms to matrix
+	Character matrix[xMax][yMax] = {{Forest, Path, Vineyard},
+							 		{Path, Home, Path},
+									{Town, Path, Junkyard}};
 
-			string i;
-			getline(cin, i);
-			cout << "----------------------------------------------------" << endl;			
+	//set player starting position
+	int x = 1;
+	int y = 1;
 
-			if (i == "North"){
-				r = "3";
-			}
-			else if (i == "East"){
-				r = "2";
-			}
-			else if (i == "Equip"){
-				addEquipped(backpack, equipped);
-			}
-			else if (i == "Unequip"){
-				deleteEquipped(equipped);
-			}
-			else if (i== "Throwaway"){
-				deleteBackpack(backpack);
-			}			  
-			else {
-				cout << "Enter a supported choice!" << endl;
-			}
-		}
+	bool run = true;
 
-		if (r == "3"){
-			Path.describeCharacter();
-			cout << "Where do you go?" << endl;
-			cout << "East or South" << endl;
+	do {
+		matrix[x][y].describeCharacter();
 
-			string i;
-			getline(cin, i);
-			cout << "----------------------------------------------------" << endl;
-
-			if (i == "East"){
-				r = "4";
-			}
-			else if (i == "South"){
-				r = "1";
-			} 
-			else if (i == "Equip"){
-				addEquipped(backpack, equipped);
-			}
-			else if (i == "Unequip"){
-				deleteEquipped(equipped);
-			}
-			else if (i== "Throwaway"){
-				deleteBackpack(backpack);
-			}			  
-			else {
-				cout << "Enter a supported choice!" << endl;
-			}
-		}
-
-		if (r == "2"){
-			Town.describeCharacter();
-			shop(Player, greatSword, mightyShield, battleSet, backpack);
-			/*for (int i=0; i<10; i++){
-				cout << backpack[i].name << endl;
-			}*/
-
-			cout << "Where do you go?" << endl;			
-			cout << "North or West" << endl;
-
-			string i;
-			getline(cin, i);
-			cout << "----------------------------------------------------" << endl;
-
-			if (i == "North"){
-				r = "4";
-			}
-			else if (i == "West"){
-				r = "1";
-			}
-			else if (i == "Equip"){
-				addEquipped(backpack, equipped);
-				/*for (int i=0; i<3; i++){
-					cout << equipped[i].name << endl;
-				}*/				
-			}
-			else if (i == "Unequip"){
-				deleteEquipped(equipped);
-			}
-			else if (i== "Throwaway"){
-				deleteBackpack(backpack);
-			}
-			else {
-				cout << "Enter a supported choice!" << endl;
-			}
-		}
-
-		if (r == "4"){
-			Forest.describeCharacter();
+		if (matrix[x][y].name == "the Forest"){
 			battle(Player, Monster, equipped);
+		}
+		if (Player.health <= 0 or Monster.health <= 0){
+			break;
+		}
 
-			if (Player.getHealth() <= 0 or Monster.getHealth() <= 0){
-				break;
+		if (matrix[x][y].name == "your Town"){
+			shop(Player, greatSword, mightyShield, battleSet, backpack);
+		}
+
+		cout << "Where do you go?" << endl;
+		if (x != 0){
+			cout << "North ";
+		}
+		if (x != xMax - 1){
+			cout << "South ";
+		}
+		if (y != yMax - 1){
+			cout << "East ";
+		}
+		if (y != 0){
+			cout << "West ";
+		}
+		cout << endl;
+
+		string i;
+		getline(cin, i);
+		cout << "----------------------------------------------------" << endl;			
+
+		if (i == "North"){
+			if (x != 0){
+				x -= 1;
 			}
-
-			cout << "Where do you go?" << endl;
-			cout << "South or West" << endl;
-
-			string i;
-			getline(cin, i);
-			cout << "----------------------------------------------------" << endl;
-
-			if (i == "South"){
-				r = "2";
-			}
-			else if (i == "West"){
-				r = "3";
-			} 
-			else if (i == "Equip"){
-				addEquipped(backpack, equipped);
-			}  
-			else if (i == "Unequip"){
-				deleteEquipped(equipped);
-			}
-			else if (i== "Throwaway"){
-				deleteBackpack(backpack);
-			}			
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
 		}
+		else if (i == "South"){
+			if (x != xMax - 1){
+				x += 1;
+			}
+			else {
+				cout << "Enter a supported choice!" << endl;
+			}
+		}		
+		else if (i == "East"){
+			if (y != yMax - 1){
+				y += 1;
+			}
+			else {
+				cout << "Enter a supported choice!" << endl;
+			}
+		}
+		else if (i == "West"){
+			if (y != 0){
+				y -= 1;
+			}
+			else {
+				cout << "Enter a supported choice!" << endl;
+			}
+		}
+					
+		else if (i == "Equip"){
+			addEquipped(backpack, equipped);
+		}
+		else if (i == "Unequip"){
+			deleteEquipped(equipped);
+		}
+		else if (i== "Throwaway"){
+			deleteBackpack(backpack);
+		}			  
+		else {
+			cout << "Enter a supported choice!" << endl;
+		}
 
-	}
+	} while(run == true);
+
 	return 0;
 }
