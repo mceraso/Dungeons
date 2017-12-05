@@ -24,7 +24,9 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [x] Player needs to think about Speed because Speed determines whether the Player or the Monster attacks first.
 
-* [] Player is able to navigate a 3x3 grid with more Shops and Battle events. There are more than 3 Items and more than 1 Monster
+* [x] Player is able to navigate a 3x3 grid.
+
+* [] Player experiences more Shops and Battle events. There are more than 3 Items and more than 1 Monster
 
 * [x] Player is able to afford more than 1 Item from the Shop either through being given more Gold at the start or finding more Gold in the Level
 
@@ -57,7 +59,9 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [x] passing arrays as function arguments
 
-* [] enum integration (grid creation tool?)
+* [x] const declaration for known matrix dimensions
+
+* [x] do-while control loop for handling matrix of rooms of known-size
 
 * [] vectors (unlimited capacity backpack)
 
