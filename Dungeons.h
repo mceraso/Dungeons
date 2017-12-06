@@ -10,22 +10,6 @@ public:
 	int health;
 	int speed;
 	int gold;
-
-	void setName(string n);
-	void setDescription(string d);
-	void setAttack(int a);
-	void setDefense(int def);
-	void setHealth(int h);
-	void setSpeed(int spe);
-	void setGold(int g);
-
-	string getName();
-	string getDescription();
-	int getAttack();
-	int getDefense();
-	int getHealth();
-	int getSpeed();
-	int getGold();
 	
 	void describeCharacter();
 

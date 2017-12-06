@@ -14,72 +14,72 @@ int main(){
 
 	//Define Player Character
 	Character Player;
-	Player.setName(n);
-	Player.setAttack(5);
-	Player.setDefense(5);
-	Player.setHealth(5);
-	Player.setSpeed(5);
-	Player.setGold(20);
+	Player.name = n;
+	Player.attack = 5;
+	Player.defense = 5;
+	Player.health = 5;
+	Player.speed = 5;
+	Player.gold = 20;
 	Character backpack[10];
 	Character equipped[3];
 
 	//Define Item Characters
 	Character greatSword;
-	greatSword.setName("Sword");
-	greatSword.setAttack(5);
-	greatSword.setDefense(0);
-	greatSword.setHealth(0);
-	greatSword.setSpeed(0);
-	greatSword.setGold(10);
+	greatSword.name = "Sword";
+	greatSword.attack = 5;
+	greatSword.defense = 0;
+	greatSword.health = 0;
+	greatSword.speed = 0;
+	greatSword.gold = 10;
 
 	Character mightyShield;
-	mightyShield.setName("Shield");
-	mightyShield.setAttack(0);
-	mightyShield.setDefense(5);
-	mightyShield.setHealth(0);
-	mightyShield.setSpeed(0);
-	mightyShield.setGold(10);
+	mightyShield.name = "Shield";
+	mightyShield.attack = 0;
+	mightyShield.defense = 5;
+	mightyShield.health = 0;
+	mightyShield.speed = 0;
+	mightyShield.gold = 10;
 
 	Character battleSet;
-	battleSet.setName("Battle Set");
-	battleSet.setAttack(5);
-	battleSet.setDefense(5);
-	battleSet.setHealth(0);
-	battleSet.setSpeed(5);
-	battleSet.setGold(25);
+	battleSet.name = "Battle Set";
+	battleSet.attack = 5;
+	battleSet.defense = 5;
+	battleSet.health = 0;
+	battleSet.speed = 5;
+	battleSet.gold = 25;
 
 	//Define Monster Characters
 	Character Monster;
-	Monster.setName("Monster");
-	Monster.setAttack(10);
-	Monster.setDefense(5);
-	Monster.setHealth(15);
-	Monster.setSpeed(5);
+	Monster.name = "Monster";
+	Monster.attack = 10;
+	Monster.defense = 5;
+	Monster.health = 15;
+	Monster.speed = 5;
 
 	//Define Room Characters
 	Character Home;
-	Home.setName("Home");
-	Home.setDescription("It feels good to be home!");
+	Home.name = "Home";
+	Home.description = "It feels good to be home!";
 
 	Character Path;
-	Path.setName("a Path");
-	Path.setDescription("You like walking the path!");
+	Path.name = "a Path";
+	Path.description = "You like walking the path!";
 	
 	Character Town;
-	Town.setName("your Town");
-	Town.setDescription("All your friends and family live here. And there's a shop!");
+	Town.name = "your Town";
+	Town.description = "All your friends and family live here. And there's a shop!";
 	
 	Character Forest;
-	Forest.setName("the Forest");
-	Forest.setDescription("There is something ominous about the forest today...");
+	Forest.name = "the Forest";
+	Forest.description = "There is something ominous about the forest today...";
 
 	Character Junkyard;
-	Junkyard.setName("the Junkyard");
-	Junkyard.setDescription("One man's trash is another man's treasure.");
+	Junkyard.name = "the Junkyard";
+	Junkyard.description = "One man's trash is another man's treasure.";
 
 	Character Vineyard;
-	Vineyard.setName("the Vineyard");
-	Vineyard.setDescription("It's nice. They make wine here.");
+	Vineyard.name = "the Vineyard";
+	Vineyard.description = "It's nice. They make wine here.";
 
 	//set dimensions of room matrix
 	const int xMax = 3;
@@ -168,7 +168,7 @@ int main(){
 		else if (i == "Unequip"){
 			deleteEquipped(equipped);
 		}
-		else if (i== "Throwaway"){
+		else if (i == "Throwaway"){
 			deleteBackpack(backpack);
 		}			  
 		else {
