@@ -16,7 +16,7 @@ int main(){
 	Character Player;
 	Player.name = n;
 	Player.attack = 5;
-	Player.defense = 5;
+	Player.defense = 5; 
 	Player.health = 5;
 	Player.speed = 5;
 	Player.gold = 20;
@@ -56,28 +56,30 @@ int main(){
 	Monster.health = 15;
 	Monster.speed = 5;
 
-	//Define Room Characters
-	Character Home;
+	//Define Rooms
+	Room Home;
 	Home.name = "Home";
 	Home.description = "It feels good to be home!";
 
-	Character Path;
+	Room Path;
 	Path.name = "a Path";
 	Path.description = "You like walking the path!";
 	
-	Character Town;
+	Room Town;
 	Town.name = "your Town";
 	Town.description = "All your friends and family live here. And there's a shop!";
 	
-	Character Forest;
+	Room Forest;
 	Forest.name = "the Forest";
 	Forest.description = "There is something ominous about the forest today...";
+	Forest.battleBool = true;
+	Forest.Monster = Monster;
 
-	Character Junkyard;
+	Room Junkyard;
 	Junkyard.name = "the Junkyard";
 	Junkyard.description = "One man's trash is another man's treasure.";
 
-	Character Vineyard;
+	Room Vineyard;
 	Vineyard.name = "the Vineyard";
 	Vineyard.description = "It's nice. They make wine here.";
 
@@ -86,9 +88,9 @@ int main(){
 	const int yMax = 3;
 
 	//add rooms to matrix
-	Character matrix[xMax][yMax] = {{Forest, Path, Vineyard},
-							 		{Path, Home, Path},
-									{Town, Path, Junkyard}};
+	Room matrix[xMax][yMax] = {{Forest, Path, Vineyard},
+							   {Path, Home, Path},
+							   {Town, Path, Junkyard}};
 
 	//set player starting position
 	int x = 1;
@@ -97,17 +99,18 @@ int main(){
 	bool run = true;
 
 	do {
-		matrix[x][y].describeCharacter();
+		matrix[x][y].describeRoom();
 
-		if (matrix[x][y].name == "the Forest"){
-			battle(Player, Monster, equipped);
-		}
-		if (Player.health <= 0 or Monster.health <= 0){
-			break;
+		if (matrix[x][y].battleBool == true){
+			matrix[x][y].battle(Player, equipped);
+
+			if (Player.health <= 0 or matrix[x][y].Monster.health <= 0){
+				break;
+			}
 		}
 
 		if (matrix[x][y].name == "your Town"){
-			shop(Player, greatSword, mightyShield, battleSet, backpack);
+			matrix[x][y].shop(Player, greatSword, mightyShield, battleSet, backpack);
 		}
 
 		cout << "Where do you go?" << endl;

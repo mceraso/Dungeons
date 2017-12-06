@@ -6,13 +6,18 @@ using namespace std;
 	/*Character::Character(){
 	}*/
 
-	void Character::describeCharacter(){
+	Room::Room(){
+		battleBool = false;
+		shopBool = false;
+	}
+
+	void Room::describeRoom(){
 		cout << "This is " << name << endl;
 		cout << description << endl;
 	}
 
 	//defining battle function
-	void battle(Character& Player, Character& Monster, Character equipped[3]){
+	void Room::battle(Character& Player, Character equipped[3]){
 		cout << endl << Player.name << ", you are approached by a " << Monster.name << endl;
 
 		int eA = Player.attack;
@@ -25,7 +30,6 @@ using namespace std;
 			eS += equipped[n].speed;
 			eH += equipped[n].health;
 		}
-
 
 		int x = 0;
 		while (x == 0){
@@ -94,7 +98,7 @@ using namespace std;
 		}
 	}
 
-	void playerBought(Character& Player, Character item){
+	void Room::playerBought(Character& Player, Character item){
 		cout << "You bought the " << item.name << "!" << endl;
 		cout << "Gold is decreased by " << item.gold << "." << endl;
 		Player.gold = Player.gold - item.gold;
@@ -139,7 +143,7 @@ using namespace std;
 		cout << "Thank you!" << endl << endl;
 	}
 
-	void shop(Character& Player, Character item1, Character item2, Character item3, Character backpack[10]){
+	void Room::shop(Character& Player, Character item1, Character item2, Character item3, Character backpack[10]){
 		cout << endl << "Welcome to the shop!" << endl;
 		cout << "Looks like you have " << Player.gold << " Gold" << endl;
 		if (Player.gold <= 0){
@@ -150,9 +154,9 @@ using namespace std;
 		int x = 0;
 		while (x == 0){
 			cout << "What would you like?" << endl;
-			cout << item1.name << " for " << item1.name << " Gold" << endl;
-			cout << item2.name << " for " << item2.name << " Gold" << endl;
-			cout << item3.name << " for " << item3.name << " Gold" << endl;
+			cout << item1.name << " for " << item1.gold << " Gold" << endl;
+			cout << item2.name << " for " << item2.gold << " Gold" << endl;
+			cout << item3.name << " for " << item3.gold << " Gold" << endl;
 			cout << "Nothing" << endl;
 
 			string a;
