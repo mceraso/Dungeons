@@ -59,7 +59,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [x] passing arrays as function arguments
 
-* [x] const declaration for known matrix dimensions
+* [x] const int declaration for known matrix dimensions
 
 * [x] do-while control loop for handling matrix of rooms of known-size
 
