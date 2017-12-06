@@ -30,7 +30,7 @@ public:
 	Character shopGoods[3];
 
 	void battle(Character&, Character equipped[3]);
-	void shop(Character&, Character, Character, Character, Character backpack[10]);
+	void shop(Character&, Character backpack[10]);
 
 	~Room(){
 	}

@@ -143,13 +143,17 @@ using namespace std;
 		cout << "Thank you!" << endl << endl;
 	}
 
-	void Room::shop(Character& Player, Character item1, Character item2, Character item3, Character backpack[10]){
+	void Room::shop(Character& Player, Character backpack[10]){
 		cout << endl << "Welcome to the shop!" << endl;
 		cout << "Looks like you have " << Player.gold << " Gold" << endl;
 		if (Player.gold <= 0){
 			cout << "Go get more Gold!" << endl;
 			return;
 		}
+
+		Character item1 = shopGoods[0];
+		Character item2 = shopGoods[1];
+		Character item3 = shopGoods[2];
 
 		int x = 0;
 		while (x == 0){

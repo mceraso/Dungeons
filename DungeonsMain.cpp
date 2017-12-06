@@ -68,11 +68,19 @@ int main(){
 	Room Town;
 	Town.name = "your Town";
 	Town.description = "All your friends and family live here. And there's a shop!";
+	//declare a shop event to happen in town
+	Town.shopBool = true;
+	//define the shop's goods in the town
+	Town.shopGoods[0] = greatSword;
+	Town.shopGoods[1] = mightyShield;
+	Town.shopGoods[2] = battleSet;	
 	
 	Room Forest;
 	Forest.name = "the Forest";
 	Forest.description = "There is something ominous about the forest today...";
+	//declare a battle event to happen in the forest
 	Forest.battleBool = true;
+	//define the monster in the forest
 	Forest.Monster = Monster;
 
 	Room Junkyard;
@@ -109,8 +117,8 @@ int main(){
 			}
 		}
 
-		if (matrix[x][y].name == "your Town"){
-			matrix[x][y].shop(Player, greatSword, mightyShield, battleSet, backpack);
+		if (matrix[x][y].shopBool == true){
+			matrix[x][y].shop(Player, backpack);
 		}
 
 		cout << "Where do you go?" << endl;
