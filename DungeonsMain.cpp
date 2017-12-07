@@ -4,107 +4,177 @@ using namespace std;
 
 int main(){
 
+	//put continue statements in your control loops
+
 	string n;
 
 	//Get player's name
 	cout << "----------------------------------------------------" << endl;	
+	cout << "Welcome to the game.\nControl your character by typing commands.\nType Equip, Unequip, or Throwaway to access your inventory." << endl;
 	cout << "What is your name?" << endl; 
 	getline(cin, n);
 	cout << "----------------------------------------------------" << endl;
+
+	cout << "Input setting here." << endl << endl;
 
 	//Define Player Character
 	Character Player;
 	Player.name = n;
 	Player.attack = 5;
 	Player.defense = 5; 
-	Player.health = 5;
+	Player.health = 10;
 	Player.speed = 5;
-	Player.gold = 20;
+	Player.gold = 15;
 	Character backpack[10];
 	Character equipped[3];
 
 	//Define Item Characters
-	Character greatSword;
-	greatSword.name = "Sword";
-	greatSword.attack = 5;
-	greatSword.defense = 0;
-	greatSword.health = 0;
-	greatSword.speed = 0;
-	greatSword.gold = 10;
+	Character item1;
+	item1.name = "Item 1";
+	item1.attack = 0;
+	item1.defense = 5;
+	item1.health = 2;
+	item1.speed = -4;
+	item1.gold = 5;
 
-	Character mightyShield;
-	mightyShield.name = "Shield";
-	mightyShield.attack = 0;
-	mightyShield.defense = 5;
-	mightyShield.health = 0;
-	mightyShield.speed = 0;
-	mightyShield.gold = 10;
+	Character item2;
+	item2.name = "Item 2";
+	item2.attack = 0;
+	item2.defense = 5;
+	item2.health = 2;
+	item2.speed = -4;
+	item2.gold = 5;
 
-	Character battleSet;
-	battleSet.name = "Battle Set";
-	battleSet.attack = 5;
-	battleSet.defense = 5;
-	battleSet.health = 0;
-	battleSet.speed = 5;
-	battleSet.gold = 25;
+	Character item3;
+	item3.name = "Item 3";
+	item3.attack = 0;
+	item3.defense = 5;
+	item3.health = 2;
+	item3.speed = -4;
+	item3.gold = 5;
+
+	Character item4;
+	item4.name = "Item 4";
+	item4.attack = 0;
+	item4.defense = 5;
+	item4.health = 2;
+	item4.speed = -4;
+	item4.gold = 5;
+
+	Character item5;
+	item5.name = "Item 5";
+	item5.attack = 0;
+	item5.defense = 5;
+	item5.health = 2;
+	item5.speed = -4;
+	item5.gold = 5;
+
+	Character item6;
+	item6.name = "Item 6";
+	item6.attack = 0;
+	item6.defense = 5;
+	item6.health = 2;
+	item6.speed = -4;
+	item6.gold = 5;
 
 	//Define Monster Characters
-	Character Monster;
-	Monster.name = "Monster";
-	Monster.attack = 10;
-	Monster.defense = 5;
-	Monster.health = 15;
-	Monster.speed = 5;
+	Character a_Monster;
+	a_Monster.name = "Attack Monster";
+	a_Monster.attack = 10;
+	a_Monster.defense = 5;
+	a_Monster.health = 10;
+	a_Monster.speed = 5;
+
+	Character d_Monster;
+	d_Monster.name = "Defense Monster";
+	d_Monster.attack = 5;
+	d_Monster.defense = 10;
+	d_Monster.health = 10;
+	d_Monster.speed = 5;
+
+	Character s_Monster;
+	s_Monster.name = "Speed Monster";
+	s_Monster.attack = 5;
+	s_Monster.defense = 5;
+	s_Monster.health = 10;
+	s_Monster.speed = 10;
+
+	Character b_Monster;
+	b_Monster.name = "Boss Monster";
+	b_Monster.attack = 10;
+	b_Monster.defense = 10;
+	b_Monster.health = 10;
+	b_Monster.speed = 10;			
 
 	//Define Rooms
 	Room Home;
-	Home.name = "Home";
-	Home.description = "It feels good to be home!";
+	Home.name = "the Entrance";
+	Home.description = "Description.";
 
-	Room Path;
-	Path.name = "a Path";
-	Path.description = "You like walking the path!";
-	
-	Room Town;
-	Town.name = "your Town";
-	Town.description = "All your friends and family live here. And there's a shop!";
-	//declare a shop event to happen in town
-	Town.shopBool = true;
-	//define the shop's goods in the town
-	Town.shopGoods[0] = greatSword;
-	Town.shopGoods[1] = mightyShield;
-	Town.shopGoods[2] = battleSet;	
-	
-	Room Forest;
-	Forest.name = "the Forest";
-	Forest.description = "There is something ominous about the forest today...";
-	//declare a battle event to happen in the forest
-	Forest.battleBool = true;
-	//define the monster in the forest
-	Forest.Monster = Monster;
+	Room Center;
+	Center.name = "the Center";
+	Center.description = "Description."; 
 
-	Room Junkyard;
-	Junkyard.name = "the Junkyard";
-	Junkyard.description = "One man's trash is another man's treasure.";
+	Room Top;
+	Top.name = "the Back";
+	Top.description = "Description.";
 
-	Room Vineyard;
-	Vineyard.name = "the Vineyard";
-	Vineyard.description = "It's nice. They make wine here.";
+	Room a_Den;
+	a_Den.name = "a Monster Den";
+	a_Den.description = "Description.";
+	a_Den.battleBool = true;
+	a_Den.Monster = a_Monster;
+
+	Room d_Den;
+	d_Den.name = "a Monster Den";
+	d_Den.description = "Description.";
+	d_Den.battleBool = true;
+	d_Den.Monster = d_Monster;
+
+	Room s_Den;
+	s_Den.name = "a Monster Den";
+	s_Den.description = "Description.";
+	s_Den.battleBool = true;
+	s_Den.Monster = s_Monster;
+
+	Room b_Den;
+	b_Den.name = "the Boss's Quarters";
+	b_Den.description = "Description.";
+	b_Den.battleBool = true;
+	b_Den.Monster = b_Monster;
+
+	Room Store_1;
+	Store_1.name = "Store 1";
+	Store_1.description = "Description.";
+	Store_1.shopBool = true;
+	Store_1.shopGoods[0] = pills;
+	Store_1.shopGoods[1] = soy;
+	Store_1.shopGoods[2] = fur;
+
+	Room Store_2;
+	Store_2.name = "Store 2";
+	Store_2.description = "Description.";
+	Store_2.shopBool = true;
+	Store_2.shopGoods[0] = thotParty;
+	Store_2.shopGoods[1] = suit;
+	Store_2.shopGoods[2] = dildo;		
 
 	//set dimensions of room matrix
 	const int xMax = 3;
 	const int yMax = 3;
 
 	//add rooms to matrix
-	Room matrix[xMax][yMax] = {{Forest, Path, Vineyard},
-							   {Path, Home, Path},
-							   {Town, Path, Junkyard}};
+	Room matrix[xMax][yMax] = {{b_Den, Top, a_Den},
+							   {Store_1, Center, Store_2},
+							   {s_Den, Home, d_Den}};
 
 	//set player starting position
-	int x = 1;
+	int x = 2;
 	int y = 1;
 
 	bool run = true;
+
+	int monsterCount = 4;
 
 	do {
 		matrix[x][y].describeRoom();
@@ -112,7 +182,15 @@ int main(){
 		if (matrix[x][y].battleBool == true){
 			matrix[x][y].battle(Player, equipped);
 
-			if (Player.health <= 0 or matrix[x][y].Monster.health <= 0){
+			if (Player.health <= 0){
+				break;
+			}
+			else if (matrix[x][y].Monster.health <= 0){
+				monsterCount = monsterCount - 1;
+				matrix[x][y].battleBool = false;
+			}	
+			if (monsterCount == 0){
+				cout << Player.name << ", you won the game!" << endl;
 				break;
 			}
 		}

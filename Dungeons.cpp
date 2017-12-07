@@ -93,7 +93,13 @@ using namespace std;
 
 		else if (Monster.health <= 0){
 			cout << "You killed the " << Monster.name << "!" << endl;
-			cout << "Congratulations, " << Player.name << "! You won the game!" << endl;
+			cout << "Congratulations, " << Player.name << "!" << endl;
+			cout << "Your base Attack, Defense, Speed, and Health have all increased by +1" << endl;
+			Player.attack = Player.attack + 1;
+			Player.defense = Player.defense + 1;
+			Player.speed = Player.speed + 1;
+			Player.speed = Player.speed + 1;  
+
 			cout << "----------------------------------------------------" << endl;;			
 		}
 	}
