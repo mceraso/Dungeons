@@ -26,7 +26,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [x] Player is able to navigate a 3x3 grid.
 
-* [] Player experiences more Shops and Battle events. There are more than 3 Items and more than 1 Monster
+* [x] Player experiences more Shops and Battle events. There are more than 3 Items and more than 1 Monster
 
 * [x] Player is able to afford more than 1 Item from the Shop either through being given more Gold at the start or finding more Gold in the Level
 
@@ -39,6 +39,8 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 * [] Player can check their stats at any time
 
 * [] Player can check item stats before purchase
+
+* [] Player receives better feedback in a battle
 
 * [] Player is restricted access to certain Rooms until after acquiring a certain Item
 
