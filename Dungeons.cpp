@@ -2,9 +2,12 @@
 #include "Dungeons.h"
 using namespace std;
 
-	//default constructor used
-	/*Character::Character(){
-	}*/
+	Character::Character(){
+		attack = 0;
+		defense = 0;
+		health = 0;
+		speed = 0;
+	}
 
 	Room::Room(){
 		battleBool = false;
@@ -24,11 +27,12 @@ using namespace std;
 		int eD = Player.defense;
 		int eS = Player.speed;
 		int eH = Player.health;
-		for (int n = 0; n < 3; n ++){
+		for (int n = 0; n < 3; n++){
 			eA += equipped[n].attack;
 			eD += equipped[n].defense;
 			eS += equipped[n].speed;
 			eH += equipped[n].health;
+
 		}
 
 		int x = 0;
@@ -38,7 +42,7 @@ using namespace std;
 				netS = true;
 				cout << "The " << Monster.name << " attacked you!" << endl;
 				int netA = Monster.attack - eD;
-				if (netA < 0){
+				if (netA <= 0){
 					netA = 1;
 				}
 				eH -= netA;
@@ -46,7 +50,9 @@ using namespace std;
 					break;
 				}				
 			}
-
+			
+			cout << "Your health is " << eH << "." << endl;
+			cout << "The " << Monster.name << "'s health is " << Monster.health << "." << endl;
 			cout << "What do you do?" << endl;
 			cout << "Attack or Run" << endl;
 			string i;
@@ -54,13 +60,24 @@ using namespace std;
 			cout << "----------------------------------------------------" << endl;;
 
 			if (i == "Run"){
-				cout << "You got away safely!" << endl;
-				break;
+
+   				srand(time(NULL));
+    			int number = rand() % 100 + 1;  //Generate random number 1 to 100
+
+          		if (number <= 50) { //50% chance
+					cout << "You got away safely!" << endl;
+					break;
+				}
+					
+          		else {
+					cout << "You could not escape!" << endl;
+          		}
 			}
+
 			else if (i == "Attack"){
 				cout << "You attacked the " << Monster.name << "!" << endl;
 				int netA = eA - Monster.defense;
-				if (netA < 0){
+				if (netA <= 0){
 					netA = 1;
 				}
 				Monster.health = Monster.health - netA;
@@ -97,8 +114,8 @@ using namespace std;
 			cout << "Your base Attack, Defense, Speed, and Health have all increased by +1" << endl;
 			Player.attack = Player.attack + 1;
 			Player.defense = Player.defense + 1;
+			Player.health = Player.health + 1;
 			Player.speed = Player.speed + 1;
-			Player.speed = Player.speed + 1;  
 
 			cout << "----------------------------------------------------" << endl;;			
 		}

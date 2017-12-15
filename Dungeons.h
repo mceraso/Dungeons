@@ -3,6 +3,7 @@ using namespace std;
 
 class Character{
 public:
+	Character();
 	string name;
 	string description;
 	int attack;
