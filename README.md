@@ -1,5 +1,5 @@
 # Dungeons
-Teaching myself cpp with a text adventure
+Teaching myself cpp with a text adventure. Development has stopped in order to pursue PCB and Arduino-based projects. The idea is to come back to the text adventure to add features based on what I learn while completing Arduino projects.
 
 # Player Stories completed before first commit:
 * [x] Player inputs their name at start; name is used for dialogoue throughout
@@ -20,17 +20,23 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 # Player Story Objectives:
 * [x] Equipped items affect Player performance in Battle
  
-* [] Battle events incorporate randomness / probability in monster action
-
 * [x] Player needs to think about Speed because Speed determines whether the Player or the Monster attacks first.
 
 * [x] Player is able to navigate a 3x3 grid.
 
-* [] Player experiences more Shops and Battle events. There are more than 3 Items and more than 1 Monster
+* [x] Player experiences more Shops and Battle events. There are more than 3 Items and more than 1 Monster
 
 * [x] Player is able to afford more than 1 Item from the Shop either through being given more Gold at the start or finding more Gold in the Level
 
 * [x] Player is able to equip and de-equip Items. There are limits to what can be equipped at the same time
+
+* [x] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
+
+* [x] Player receives better feedback in a battle
+
+* [x] Battle events incorporate randomness / probability
+
+* [] Player cannot win battles by running and returning with full health
 
 * [] Player can choose to use an Item during Battle. Some items are un-equipable but can be used in Battle
 
@@ -41,8 +47,6 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 * [] Player can check item stats before purchase
 
 * [] Player is restricted access to certain Rooms until after acquiring a certain Item
-
-* [x] Player sees formatting in Command Line that makes it easy to understand where was the last input and most recent output
 
 * [] Player is able to obtain a backpack with unlimited capacity
 
@@ -63,10 +67,11 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [x] do-while control loop for handling matrix of rooms of known-size
 
+* [x] randomness in battle event: https://stackoverflow.com/questions/23055585/program-with-probability
+
 * [] vectors (unlimited capacity backpack)
 
 * [] array.fill() and array.swap() (monster attack dynamics)
 
 * [] namespace creation (game wrapper / workspace)
 
-* [] randomness in battle event: https://stackoverflow.com/questions/23055585/program-with-probability
