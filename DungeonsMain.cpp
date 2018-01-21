@@ -4,8 +4,6 @@ using namespace std;
 
 int main(){
 
-	//put continue statements in your control loops
-
 	string n;
 
 	//Get player's name
@@ -15,7 +13,7 @@ int main(){
 	getline(cin, n);
 	cout << "----------------------------------------------------" << endl;
 
-	cout << "Input setting here." << endl << endl;
+	cout << "You wake up in your room to the sound of screaming townspeople.\nYou are brave and head out." << endl << endl;
 
 	//Define Player Character
 	Character Player;
@@ -29,78 +27,78 @@ int main(){
 	Character equipped[3];
 
 	//Define Item Characters
-	Character item1;
-	item1.name = "Item 1";
-	item1.attack = 0;
-	item1.defense = 5;
-	item1.health = 2;
-	item1.speed = -4;
-	item1.gold = 5;
+	Character chainmail;
+	chainmail.name = "Chainmail";
+	chainmail.attack = 0;
+	chainmail.defense = 5;
+	chainmail.health = 2;
+	chainmail.speed = -4;
+	chainmail.gold = 5;
 
-	Character item2;
-	item2.name = "Item 2";
-	item2.attack = 0;
-	item2.defense = 5;
-	item2.health = 2;
-	item2.speed = -4;
-	item2.gold = 5;
+	Character mace;
+	mace.name = "Mace";
+	mace.attack = 4;
+	mace.defense = 1;
+	mace.health = -4;
+	mace.speed = 0;
+	mace.gold = 5;
 
-	Character item3;
-	item3.name = "Item 3";
-	item3.attack = 0;
-	item3.defense = 5;
-	item3.health = 2;
-	item3.speed = -4;
-	item3.gold = 5;
+	Character potion;
+	potion.name = "Purple Potion";
+	potion.attack = 3;
+	potion.defense = -2;
+	potion.health = -4;
+	potion.speed = 6;
+	potion.gold = 5;
 
-	Character item4;
-	item4.name = "Item 4";
-	item4.attack = 0;
-	item4.defense = 5;
-	item4.health = 2;
-	item4.speed = -4;
-	item4.gold = 5;
+	Character shoes;
+	shoes.name = "Shoes of Swiftness";
+	shoes.attack = 0;
+	shoes.defense = -1;
+	shoes.health = 1;
+	shoes.speed = 2;
+	shoes.gold = 5;
 
-	Character item5;
-	item5.name = "Item 5";
-	item5.attack = 0;
-	item5.defense = 5;
-	item5.health = 2;
-	item5.speed = -4;
-	item5.gold = 5;
+	Character soy;
+	soy.name = "Soy";
+	soy.attack = -5;
+	soy.defense = -3;
+	soy.health = 1;
+	soy.speed = -1;
+	soy.gold = 5;
 
-	Character item6;
-	item6.name = "Item 6";
-	item6.attack = 0;
-	item6.defense = 5;
-	item6.health = 2;
-	item6.speed = -4;
-	item6.gold = 5;
+	Character fur;
+	fur.name = "Fur Coat";
+	fur.attack = -2;
+	fur.defense = 0;
+	fur.health = 4;
+	fur.speed = 0;
+	fur.gold = 5;
 
 	//Define Monster Characters
 	Character a_Monster;
-	a_Monster.name = "Attack Monster";
+	a_Monster.name = "Goblin";
 	a_Monster.attack = 10;
 	a_Monster.defense = 5;
 	a_Monster.health = 10;
 	a_Monster.speed = 5;
 
 	Character d_Monster;
-	d_Monster.name = "Defense Monster";
+	d_Monster.name = "Goblin";
 	d_Monster.attack = 5;
 	d_Monster.defense = 10;
 	d_Monster.health = 10;
 	d_Monster.speed = 5;
 
 	Character s_Monster;
-	s_Monster.name = "Speed Monster";
+	s_Monster.name = "Goblin";
 	s_Monster.attack = 5;
 	s_Monster.defense = 5;
 	s_Monster.health = 10;
 	s_Monster.speed = 10;
 
 	Character b_Monster;
-	b_Monster.name = "Boss Monster";
+	b_Monster.name = "Wizard";
 	b_Monster.attack = 10;
 	b_Monster.defense = 10;
 	b_Monster.health = 10;
@@ -108,56 +106,56 @@ int main(){
 
 	//Define Rooms
 	Room Home;
-	Home.name = "the Entrance";
-	Home.description = "Description.";
+	Home.name = "Outside Your Home";
+	Home.description = "You hear goblins to your left and right.\nThey should not be near such a pleasant town.";
 
 	Room Center;
-	Center.name = "the Center";
-	Center.description = "Description."; 
+	Center.name = "the Center of Town";
+	Center.description = "Several townspeople are hudled together.\nYou hear hushed tones and crying as one mother explains\nhow a goblin ate her children."; 
 
 	Room Top;
-	Top.name = "the Back";
-	Top.description = "Description.";
+	Top.name = "the Back of Town";
+	Top.description = "The Mayor's Daughter is trapped in a cage.\nShe is afraid and cries for help.\nThe wizard is to your left.\nA goblin is to your right.";
 
 	Room a_Den;
-	a_Den.name = "a Monster Den";
-	a_Den.description = "Description.";
+	a_Den.name = "a Goblin's Lounge";
+	a_Den.description = "A child's toy bear lies on the ground.\nThe Goblin's lounge smells disgusting.";
 	a_Den.battleBool = true;
 	a_Den.Monster = a_Monster;
 
 	Room d_Den;
-	d_Den.name = "a Monster Den";
-	d_Den.description = "Description.";
+	d_Den.name = "a Goblin's Lounge";
+	d_Den.description = "The Mayor's robe is torn up and lies on the ground.\nYou wonder if he is alive.";
 	d_Den.battleBool = true;
 	d_Den.Monster = d_Monster;
 
 	Room s_Den;
-	s_Den.name = "a Monster Den";
-	s_Den.description = "Description.";
+	s_Den.name = "a Goblin's Lounge";
+	s_Den.description = "A child's skull lies on the ground.\nIt looks like it has been licked clean.";	
 	s_Den.battleBool = true;
 	s_Den.Monster = s_Monster;
 
 	Room b_Den;
-	b_Den.name = "the Boss's Quarters";
-	b_Den.description = "Description.";
+	b_Den.name = "the Wizard's Quarters";
+	b_Den.description = "The Wizard laughs at you.\nHe explains that he has killed the Mayor\nand taken his daughter prisoner.";	
 	b_Den.battleBool = true;
 	b_Den.Monster = b_Monster;
 
-	Room Store_1;
-	Store_1.name = "Store 1";
-	Store_1.description = "Description.";
-	Store_1.shopBool = true;
-	Store_1.shopGoods[0] = pills;
-	Store_1.shopGoods[1] = soy;
-	Store_1.shopGoods[2] = fur;
+	Room Aisle_1;
+	Aisle_1.name = "the Market";
+	Aisle_1.description = "People are gossiping about the Mayor's whereabouts.\nA clerk is selling items.";
+	Aisle_1.shopBool = true;
+	Aisle_1.shopGoods[0] = potion;
+	Aisle_1.shopGoods[1] = soy;
+	Aisle_1.shopGoods[2] = shoes;
 
-	Room Store_2;
-	Store_2.name = "Store 2";
-	Store_2.description = "Description.";
-	Store_2.shopBool = true;
-	Store_2.shopGoods[0] = thotParty;
-	Store_2.shopGoods[1] = suit;
-	Store_2.shopGoods[2] = dildo;		
+	Room Aisle_2;
+	Aisle_2.name = "the Shop";
+	Aisle_2.description = "The clerk holds back his tears upon seeing you enter.\nHe puts away a picture of his daughter.";
+	Aisle_2.shopBool = true;
+	Aisle_2.shopGoods[0] = chainmail;
+	Aisle_2.shopGoods[1] = mace;
+	Aisle_2.shopGoods[2] = fur;		
 
 	//set dimensions of room matrix
 	const int xMax = 3;
@@ -165,7 +163,7 @@ int main(){
 
 	//add rooms to matrix
 	Room matrix[xMax][yMax] = {{b_Den, Top, a_Den},
-							   {Store_1, Center, Store_2},
+							   {Aisle_1, Center, Aisle_2},
 							   {s_Den, Home, d_Den}};
 
 	//set player starting position
@@ -191,6 +189,10 @@ int main(){
 			}	
 			if (monsterCount == 0){
 				cout << Player.name << ", you won the game!" << endl;
+				cout << "You let the Mayor's Daughter out of her cage. She's doing just fine." << endl;
+				cout << "You take her to the center of town, and the crowd cheers!" << endl;
+				cout << "They elect you Mayor, and you keep the town safe for 100 more years." << endl; 
+				cout << "The end?" << endl; 
 				break;
 			}
 		}
