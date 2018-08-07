@@ -24,6 +24,7 @@ public:
 	string name;
 	string description;
 	void describeRoom();
+	bool blockBool;
 
 	bool battleBool;
 	Character Monster;

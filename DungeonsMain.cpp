@@ -120,10 +120,13 @@ int main(){
 	Room Center;
 	Center.name = "the Center of Town";
 	Center.description = "Several townspeople are hudled together.\nYou hear hushed tones and crying as one mother explains\nhow a goblin ate her children."; 
+	//Center.blockBool = true; // test block function
 
 	Room Top;
 	Top.name = "the Back of Town";
 	Top.description = "The Mayor's Daughter is trapped in a cage.\nShe is afraid and cries for help.\nThe wizard is to your left.\nA goblin is to your right.\nYou notice a strange cave to the North.";
+	//Top.chestBool = true; // test chest function
+	//Top.chestItem = glory; // test chest function
 
 	Room a_Den;
 	a_Den.name = "a Goblin's Lounge";
@@ -223,18 +226,31 @@ int main(){
 			matrix[x][y].shop(Player, backpack);
 		}
 
+		if (matrix[x][y].chestBool == true){
+			matrix[x][y].chest(Player, backpack);
+			matrix[x][y].chestBool = false;
+		}
+
 		cout << "Where do you go?" << endl;
-		if (x != 0){
-			cout << "North ";
+		if (x > 0){
+			if (matrix[x-1][y].blockBool == false){
+				cout << "North ";
+			}
 		}
-		if (x != xMax - 1){
-			cout << "South ";
+		if (x < xMax - 1){
+			if (matrix[x+1][y].blockBool == false){
+				cout << "South ";
+			}
 		}
-		if (y != yMax - 1){
-			cout << "East ";
+		if (y < yMax - 1){
+			if (matrix[x][y+1].blockBool == false){
+				cout << "East ";
+			}
 		}
-		if (y != 0){
-			cout << "West ";
+		if (y > 0 ){
+			if (matrix[x][y-1].blockBool == false){
+				cout << "West ";
+			}
 		}
 		cout << endl;
 
@@ -243,32 +259,40 @@ int main(){
 		cout << "----------------------------------------------------" << endl;			
 
 		if (i == "North"){
-			if (x != 0){
-				x -= 1;
+			if (x > 0){
+				if (matrix[x-1][y].blockBool == false){
+					x -= 1;
+				}
 			}
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
 		}
 		else if (i == "South"){
-			if (x != xMax - 1){
-				x += 1;
+			if (x < xMax - 1){
+				if (matrix[x+1][y].blockBool == false){
+					x += 1;
+				}
 			}
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
 		}		
 		else if (i == "East"){
-			if (y != yMax - 1){
-				y += 1;
+			if (y < yMax - 1){
+				if (matrix[x][y+1].blockBool == false){
+					y += 1;
+				}
 			}
 			else {
 				cout << "Enter a supported choice!" << endl;
 			}
 		}
 		else if (i == "West"){
-			if (y != 0){
-				y -= 1;
+			if (y > 0 ){
+				if (matrix[x][y-1].blockBool == false){
+					y -= 1;
+				}
 			}
 			else {
 				cout << "Enter a supported choice!" << endl;

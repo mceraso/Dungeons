@@ -13,6 +13,7 @@ using namespace std;
 		battleBool = false;
 		shopBool = false;
 		chestBool = false;
+		blockBool = false;
 	}
 
 	void Room::describeRoom(){
@@ -123,7 +124,7 @@ using namespace std;
 	}
 
 	void Room::playerGot(Character& Player, Character item){
-		cout << "You put the " << item.name << "in your backpack!" << endl;
+		cout << "You put the " << item.name << " in your backpack!" << endl;
 		
 		if (item.gold > 0){
 		cout << "Gold is decreased by " << item.gold << "." << endl;
@@ -170,7 +171,7 @@ using namespace std;
 	}
 
 	void Room::chest(Character& Player, Character backpack[10]){
-		cout << endl << "You open the chest and find a " << chestItem.name << "!";
+		cout << endl << "You open the chest and find a " << chestItem.name << "! ";
 		playerGot(Player, chestItem);
 		addBackpack(backpack, chestItem);
 	}
