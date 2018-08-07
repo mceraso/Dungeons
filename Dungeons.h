@@ -29,15 +29,18 @@ public:
 	Character Monster;
 	bool shopBool;
 	Character shopGoods[3];
+	bool chestBool;
+	Character chestItem;
 
 	void battle(Character&, Character equipped[3]);
 	void shop(Character&, Character backpack[10]);
+	void chest(Character&, Character backpack[10]);
 
 	~Room(){
 	}
 
 private:
-	void playerBought(Character&, Character);
+	void playerGot(Character&, Character);
 
 };
 

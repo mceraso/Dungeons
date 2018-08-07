@@ -75,6 +75,14 @@ int main(){
 	fur.speed = 0;
 	fur.gold = 5;
 
+	Character glory;
+	glory.name = "Glorious, Golden Sword";
+	glory.attack = 10;
+	glory.defense = 5;
+	glory.health = 5;
+	glory.speed = 0;
+	glory.gold = 0;	
+
 	//Define Monster Characters
 	Character a_Monster;
 	a_Monster.name = "Goblin";
@@ -115,7 +123,7 @@ int main(){
 
 	Room Top;
 	Top.name = "the Back of Town";
-	Top.description = "The Mayor's Daughter is trapped in a cage.\nShe is afraid and cries for help.\nThe wizard is to your left.\nA goblin is to your right.";
+	Top.description = "The Mayor's Daughter is trapped in a cage.\nShe is afraid and cries for help.\nThe wizard is to your left.\nA goblin is to your right.\nYou notice a strange cave to the North.";
 
 	Room a_Den;
 	a_Den.name = "a Goblin's Lounge";
@@ -155,7 +163,21 @@ int main(){
 	Aisle_2.shopBool = true;
 	Aisle_2.shopGoods[0] = chainmail;
 	Aisle_2.shopGoods[1] = mace;
-	Aisle_2.shopGoods[2] = fur;		
+	Aisle_2.shopGoods[2] = fur;
+
+	Room cave_entrance;
+	cave_entrance.name = "a strange cave entrance";
+	cave_entrance.description = "You're frightened but marvel at what might be here.";		
+
+	Room cave_tunnel;
+	cave_tunnel.name = "a tunnel inside the cave";
+	cave_tunnel.description = "You have been walking for a while and stop to take a break.";
+
+	Room cave_chamber;
+	cave_chamber.name = "the cave's main chamber";
+	cave_chamber.description = "You see a glorious, golden chest.";
+	cave_chamber.chestBool = true;
+	cave_chamber.chestItem = glory;
 
 	//set dimensions of room matrix
 	const int xMax = 3;

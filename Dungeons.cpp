@@ -12,6 +12,7 @@ using namespace std;
 	Room::Room(){
 		battleBool = false;
 		shopBool = false;
+		chestBool = false;
 	}
 
 	void Room::describeRoom(){
@@ -121,10 +122,13 @@ using namespace std;
 		}
 	}
 
-	void Room::playerBought(Character& Player, Character item){
-		cout << "You bought the " << item.name << "!" << endl;
+	void Room::playerGot(Character& Player, Character item){
+		cout << "You put the " << item.name << "in your backpack!" << endl;
+		
+		if (item.gold > 0){
 		cout << "Gold is decreased by " << item.gold << "." << endl;
 		Player.gold = Player.gold - item.gold;
+		}
 
 		cout << "When equipped, " << endl;
 		if (item.attack < 0){
@@ -163,7 +167,12 @@ using namespace std;
 		else {
 			cout << "Speed is unchanged." << endl;
 		}			
-		cout << "Thank you!" << endl << endl;
+	}
+
+	void Room::chest(Character& Player, Character backpack[10]){
+		cout << endl << "You open the chest and find a " << chestItem.name << "!";
+		playerGot(Player, chestItem);
+		addBackpack(backpack, chestItem);
 	}
 
 	void Room::shop(Character& Player, Character backpack[10]){
@@ -198,18 +207,21 @@ using namespace std;
 			}
 
 			if (a == item1.name) {
-				playerBought(Player, item1);
+				playerGot(Player, item1);
 				addBackpack(backpack, item1);
+				cout << "Thank you for your purchase!" << endl << endl;
 				break;
 			}
 			else if (a == item2.name) {
-				playerBought(Player, item2);
+				playerGot(Player, item2);
 				addBackpack(backpack, item2);
+				cout << "Thank you for your purchase!" << endl << endl;
 				break;
 			}
 			else if (a == item3.name) {
-				playerBought(Player, item3);
+				playerGot(Player, item3);
 				addBackpack(backpack, item3);
+				cout << "Thank you for your purchase!" << endl << endl;
 				break;
 			}
 			else if (a == "Nothing"){
