@@ -1,7 +1,14 @@
 # Dungeons
 Teaching myself cpp with a text adventure. Development has stopped in order to pursue PCB and Arduino-based projects. The idea is to come back to the text adventure to add features based on what I learn while completing Arduino projects.
 
-8.6.18: Development is back on. Let's create a maze, tunnel, or one-way warp.
+# 8.6.18: Development is back on.
+* [x] Player can travel through a one-way portal to get to the Focus VQ HQ and through a different one-way portal to get home.
+* [x] Player can find items in chests and in rooms without having to go through a shop mechanic.
+* [x] Player experiences a more dynamic map with tunnels. The map is no longer just an n x n grid and can be molded into any configuration
+
+# 8.6.18: Things Learned:
+* [x] using continue to skip the rest of a while loop iteration after meeting a certain condition
+* [x] using Booleans to control navigation, shops, battles, chests, and portals in each room
 
 # Player Stories completed before first commit:
 * [x] Player inputs their name at start; name is used for dialogoue throughout
