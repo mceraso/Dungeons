@@ -83,6 +83,14 @@ int main(){
 	glory.speed = 0;
 	glory.gold = 0;	
 
+	Character net;
+	net.name = "Biologically Inspired Neural Net";
+	net.attack = 0;
+	net.defense = 10;
+	net.health = 5;
+	net.speed = 5;
+	net.gold = 0;
+
 	//Define Monster Characters
 	Character a_Monster;
 	a_Monster.name = "Goblin";
@@ -115,18 +123,15 @@ int main(){
 	//Define Rooms
 	Room Home;
 	Home.name = "Outside Your Home";
-	Home.description = "You hear goblins to your left and right.\nThey should not be near such a pleasant town.";
+	Home.description = "You hear goblins to the East and West.\nA portal has opened up south of your home.";
 
 	Room Center;
 	Center.name = "the Center of Town";
 	Center.description = "Several townspeople are hudled together.\nYou hear hushed tones and crying as one mother explains\nhow a goblin ate her children."; 
-	//Center.blockBool = true; // test block function
 
 	Room Top;
 	Top.name = "the Back of Town";
-	Top.description = "The Mayor's Daughter is trapped in a cage.\nShe is afraid and cries for help.\nThe wizard is to your left.\nA goblin is to your right.\nYou notice a strange cave to the North.";
-	//Top.chestBool = true; // test chest function
-	//Top.chestItem = glory; // test chest function
+	Top.description = "The Mayor's Daughter is trapped in a cage.\nShe is afraid and cries for help.\nThe wizard is to the West.\nA goblin is to the East.\nYou notice a strange cave to the North.";
 
 	Room a_Den;
 	a_Den.name = "a Goblin's Lounge";
@@ -182,24 +187,62 @@ int main(){
 	cave_chamber.chestBool = true;
 	cave_chamber.chestItem = glory;
 
+	Room portal_focus;
+	portal_focus.name = "a portal entrance";
+	portal_focus.description = "The portal swirls and glows. It beckons you.";
+	portal_focus.portalBool = true;
+	portal_focus.portalX = 0;
+	portal_focus.portalY = 0;
+
+	Room portal_exit;
+	portal_exit.name = "a portal exit";
+	portal_exit.description = "The portal zips shut behind you!\nIt was a one way trip!";
+
+	Room focus;
+	focus.name = "Focus VQ HQ";
+	focus.description = "Malcolm greets you with enthusiasm!\nReturn home using the portal in the next room.";
+	focus.chestBool = true;
+	focus.chestItem = net;
+
+	Room portal_home;
+	portal_home.name = "a portal entrance";
+	portal_home.description = "The portal swirls and glows. It beckons you.";
+	portal_home.portalBool = true;
+	portal_home.portalX = 5;
+	portal_home.portalY = 2;
+
+	Room block;
+	block.name = "HOW DID YOU GET HERE?";
+	block.description = "YOU SHOULD NOT HAVE BEEN ABLE TO GET HERE.";
+	block.blockBool = true;
+
+	Room filler;
+	filler.name = "a filler room";
+	filler.description = "This is a room for testing purposes.";
+
 	//set dimensions of room matrix
-	const int xMax = 3;
-	const int yMax = 3;
+	const int xMax = 7;
+	const int yMax = 4;
 
 	//add rooms to matrix
-	Room matrix[xMax][yMax] = {{b_Den, Top, a_Den},
-							   {Aisle_1, Center, Aisle_2},
-							   {s_Den, Home, d_Den}};
+	Room matrix[xMax][yMax] = {{portal_exit, block, cave_chamber, block},
+							   {focus, block, cave_tunnel, block},
+							   {portal_home, block, cave_entrance, block},
+							   {block, b_Den, Top, a_Den},
+							   {block, Aisle_1, Center, Aisle_2},
+							   {block, s_Den, Home, d_Den},
+							   {block, block, portal_focus, block}};
 
 	//set player starting position
-	int x = 2;
-	int y = 1;
+	int x = 5;
+	int y = 2;
 
 	bool run = true;
 
 	int monsterCount = 4;
 
 	do {
+		cout << x << y << endl;
 		matrix[x][y].describeRoom();
 
 		if (matrix[x][y].battleBool == true){
@@ -229,6 +272,25 @@ int main(){
 		if (matrix[x][y].chestBool == true){
 			matrix[x][y].chest(Player, backpack);
 			matrix[x][y].chestBool = false;
+		}
+
+		if (matrix[x][y].portalBool == true){
+			cout << "Do you go through?" << endl;
+			cout << "Yes or No" << endl;
+			string i;
+			getline(cin, i);
+			cout << "----------------------------------------------------" << endl;
+
+			if (i == "Yes"){
+				int a = matrix[x][y].portalX;
+				int b = matrix[x][y].portalY;
+				x = a;
+				y = b;
+				continue;
+			}
+			else{
+				cout << "You didn't go through the portal." << endl;
+			}
 		}
 
 		cout << "Where do you go?" << endl;

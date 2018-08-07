@@ -32,6 +32,9 @@ public:
 	Character shopGoods[3];
 	bool chestBool;
 	Character chestItem;
+	bool portalBool;
+	int portalX;
+	int portalY;
 
 	void battle(Character&, Character equipped[3]);
 	void shop(Character&, Character backpack[10]);

@@ -14,6 +14,7 @@ using namespace std;
 		shopBool = false;
 		chestBool = false;
 		blockBool = false;
+		portalBool = false;
 	}
 
 	void Room::describeRoom(){
@@ -59,7 +60,7 @@ using namespace std;
 			cout << "Attack or Run" << endl;
 			string i;
 			getline(cin, i);
-			cout << "----------------------------------------------------" << endl;;
+			cout << "----------------------------------------------------" << endl;
 
 			if (i == "Run"){
 
@@ -171,7 +172,7 @@ using namespace std;
 	}
 
 	void Room::chest(Character& Player, Character backpack[10]){
-		cout << endl << "You open the chest and find a " << chestItem.name << "! ";
+		cout << endl << "You find a " << chestItem.name << "! " << endl;
 		playerGot(Player, chestItem);
 		addBackpack(backpack, chestItem);
 	}
