@@ -1,6 +1,8 @@
 # Dungeons
 Teaching myself cpp with a text adventure. Development has stopped in order to pursue PCB and Arduino-based projects. The idea is to come back to the text adventure to add features based on what I learn while completing Arduino projects.
 
+8.6.18: Development is back on. Let's create a maze, tunnel, or one-way warp.
+
 # Player Stories completed before first commit:
 * [x] Player inputs their name at start; name is used for dialogoue throughout
 
