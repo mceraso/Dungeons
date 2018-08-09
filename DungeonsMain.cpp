@@ -294,24 +294,28 @@ int main(){
 				matrix[x-1][y].blockBool = false;
 				Character blank;
 				backpack[i] = blank;
+				break;
 			}
 			if (backpack[i].name == matrix[x+1][y].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the South!" << endl;
 				matrix[x+1][y].blockBool = false;
 				Character blank;
 				backpack[i] = blank;
+				break;
 			}
 			if (backpack[i].name == matrix[x][y+1].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the East!" << endl;
 				matrix[x][y+1].blockBool = false;
 				Character blank;
 				backpack[i] = blank;
+				break;
 			}
 			if (backpack[i].name == matrix[x][y-1].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the West!" << endl;
 				matrix[x][y-1].blockBool = false;
 				Character blank;
 				backpack[i] = blank;
+				break;
 			}									
 		}
 

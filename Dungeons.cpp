@@ -3,6 +3,7 @@
 using namespace std;
 
 	Character::Character(){
+		name = "empty";
 		attack = 0;
 		defense = 0;
 		health = 0;
@@ -249,7 +250,7 @@ using namespace std;
 
 	void addBackpack(Character backpack[10], Character item){
 		for (int i = 0; i < 10; i++){
-			if (backpack[i].name == "") {
+			if (backpack[i].name == "empty") {
 				backpack[i] = item;
 				return;
 			}
@@ -260,7 +261,7 @@ using namespace std;
 	void deleteBackpack(Character backpack[10]){
 		cout << "What would you like to throwaway?" << endl;
 		for (int i = 0; i < 10; i++){
-			if (backpack[i].name == ""){
+			if (backpack[i].name == "empty"){
 				cout << "-empty slot-" << endl;
 			}
 			else {
@@ -285,7 +286,7 @@ using namespace std;
 	void addEquipped(Character backpack[10], Character equipped[3]){
 		cout << "What would you like to equip?" << endl;
 		for (int i = 0; i < 10; i++){
-			if (backpack[i].name == ""){
+			if (backpack[i].name == "empty"){
 				cout << "-empty slot-" << endl;
 			}
 			else {
@@ -307,7 +308,7 @@ using namespace std;
 			if (a == backpack[i].name){
 				Character e = backpack[i];
 				for (int i = 0; i < 3; i++){
-					if (equipped[i].name == ""){
+					if (equipped[i].name == "empty"){
 						equipped[i] = e;
 						cout << "You equipped " << a << "!" << endl;
 						return;
@@ -323,7 +324,7 @@ using namespace std;
 	void deleteEquipped(Character equipped[3]){
 		cout << "What would you like to unequip?" << endl;
 		for (int i = 0; i < 3; i++){
-			if (equipped[i].name == ""){
+			if (equipped[i].name == "empty"){
 				cout << "-empty slot-" << endl;
 			}
 			else {
