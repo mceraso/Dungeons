@@ -5,6 +5,8 @@ Teaching myself cpp with a text adventure. Development has stopped in order to p
 * [x] Player can travel through a one-way portal to get to the Focus VQ HQ and through a different one-way portal to get home.
 * [x] Player can find items in chests and in rooms without having to go through a shop mechanic.
 * [x] Player experiences a more dynamic map with tunnels. The map is no longer just an n x n grid and can be molded into any configuration
+* [x] Player can acquire items by killing monsters. Monsters drop items. 8.9.18
+* [x] Player can unlock doors with consummable keys in their backpack. 8.9.18
 
 # 8.6.18: Things Learned:
 * [x] using continue to skip the rest of a while loop iteration after meeting a certain condition
