@@ -193,7 +193,7 @@ int main(){
 
 	Room cave_tunnel;
 	cave_tunnel.name = "a tunnel inside the cave";
-	cave_tunnel.description = "You have been walking for a while and stop to take a break.\nA door to the North is locked.";
+	cave_tunnel.description = "You have been walking for a while and stop to take a break.";
 	cave_tunnel.battleBool = true;
 	cave_tunnel.Monster = bat;
 
@@ -262,6 +262,21 @@ int main(){
 	do {
 		//cout << x << y << endl; //debugging location problems
 		matrix[x][y].describeRoom();
+		if (matrix[x-1][y].blockBool == true){
+			cout << "The door to the North is locked\n";
+		}
+
+		if (matrix[x+1][y].blockBool == true){
+			cout << "The door to the South is locked\n";
+		}
+
+		if (matrix[x][y+1].blockBool == true){
+			cout << "The door to the East is locked\n";
+		}
+
+		if (matrix[x][y-1].blockBool == true){
+			cout << "The door to the West is locked\n";
+		}
 
 		if (matrix[x][y].battleBool == true){
 			matrix[x][y].battle(Player, equipped);
