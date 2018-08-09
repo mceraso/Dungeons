@@ -91,7 +91,19 @@ int main(){
 	net.speed = 5;
 	net.gold = 0;
 
+	Character key;
+	key.name = "Glorious, Golden Key";
+	key.isKey = true;
+
 	//Define Monster Characters
+	Character bat;
+	bat.name = "Bat";
+	bat.attack = 5;
+	bat.defense = 5;
+	bat.health = 5;
+	bat.speed = 5;
+	bat.gold = 0;
+
 	Character a_Monster;
 	a_Monster.name = "Goblin";
 	a_Monster.attack = 10;
@@ -150,6 +162,8 @@ int main(){
 	s_Den.description = "A child's skull lies on the ground.\nIt looks like it has been licked clean.";	
 	s_Den.battleBool = true;
 	s_Den.Monster = s_Monster;
+	s_Den.monsterItemBool = true;
+	s_Den.monsterItem = key;
 
 	Room b_Den;
 	b_Den.name = "the Wizard's Quarters";
@@ -179,11 +193,15 @@ int main(){
 
 	Room cave_tunnel;
 	cave_tunnel.name = "a tunnel inside the cave";
-	cave_tunnel.description = "You have been walking for a while and stop to take a break.";
+	cave_tunnel.description = "You have been walking for a while and stop to take a break.\nA door to the North is locked.";
+	cave_tunnel.battleBool = true;
+	cave_tunnel.Monster = bat;
 
 	Room cave_chamber;
 	cave_chamber.name = "the cave's main chamber";
 	cave_chamber.description = "You see a glorious, golden chest.";
+	cave_chamber.blockBool = true;
+	cave_chamber.openWith = key;
 	cave_chamber.chestBool = true;
 	cave_chamber.chestItem = glory;
 
@@ -200,7 +218,7 @@ int main(){
 
 	Room focus;
 	focus.name = "Focus VQ HQ";
-	focus.description = "Malcolm greets you with enthusiasm!\nReturn home using the portal in the next room.";
+	focus.description = "Malcolm greets you with enthusiasm!";
 	focus.chestBool = true;
 	focus.chestItem = net;
 
@@ -239,10 +257,10 @@ int main(){
 
 	bool run = true;
 
-	int monsterCount = 4;
+	int monsterCount = 5;
 
 	do {
-		cout << x << y << endl;
+		//cout << x << y << endl; //debugging location problems
 		matrix[x][y].describeRoom();
 
 		if (matrix[x][y].battleBool == true){
@@ -254,6 +272,11 @@ int main(){
 			else if (matrix[x][y].Monster.health <= 0){
 				monsterCount = monsterCount - 1;
 				matrix[x][y].battleBool = false;
+				if (matrix[x][y].monsterItemBool == true){
+					cout << "The " << matrix[x][y].Monster.name << " dropped a " << matrix[x][y].monsterItem.name << "!";
+					matrix[x][y].monsterDrop(Player, backpack);
+					matrix[x][y].monsterItemBool = false;
+				}
 			}	
 			if (monsterCount == 0){
 				cout << Player.name << ", you won the game!" << endl;
@@ -263,6 +286,33 @@ int main(){
 				cout << "The end?" << endl; 
 				break;
 			}
+		}
+
+		for (int i = 0; i < 10; i++){
+			if (backpack[i].name == matrix[x-1][y].openWith.name) {
+				cout << "You used your " << backpack[i].name << " and opened the door to the North!" << endl;
+				matrix[x-1][y].blockBool = false;
+				Character blank;
+				backpack[i] = blank;
+			}
+			if (backpack[i].name == matrix[x+1][y].openWith.name) {
+				cout << "You used your " << backpack[i].name << " and opened the door to the South!" << endl;
+				matrix[x+1][y].blockBool = false;
+				Character blank;
+				backpack[i] = blank;
+			}
+			if (backpack[i].name == matrix[x][y+1].openWith.name) {
+				cout << "You used your " << backpack[i].name << " and opened the door to the East!" << endl;
+				matrix[x][y+1].blockBool = false;
+				Character blank;
+				backpack[i] = blank;
+			}
+			if (backpack[i].name == matrix[x][y-1].openWith.name) {
+				cout << "You used your " << backpack[i].name << " and opened the door to the West!" << endl;
+				matrix[x][y-1].blockBool = false;
+				Character blank;
+				backpack[i] = blank;
+			}									
 		}
 
 		if (matrix[x][y].shopBool == true){

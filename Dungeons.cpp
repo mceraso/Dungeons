@@ -7,14 +7,18 @@ using namespace std;
 		defense = 0;
 		health = 0;
 		speed = 0;
+		gold = 0;
+		isKey = false;
 	}
 
 	Room::Room(){
 		battleBool = false;
+		monsterItemBool = false;
 		shopBool = false;
 		chestBool = false;
 		blockBool = false;
 		portalBool = false;
+		openWith.name = "Open";
 	}
 
 	void Room::describeRoom(){
@@ -120,7 +124,7 @@ using namespace std;
 			Player.health = Player.health + 1;
 			Player.speed = Player.speed + 1;
 
-			cout << "----------------------------------------------------" << endl;;			
+			cout << "----------------------------------------------------" << endl;			
 		}
 	}
 
@@ -176,6 +180,12 @@ using namespace std;
 		playerGot(Player, chestItem);
 		addBackpack(backpack, chestItem);
 	}
+
+	void Room::monsterDrop(Character& Player, Character backpack[10]){
+		cout << endl << "You find a " << monsterItem.name << "! " << endl;
+		playerGot(Player, monsterItem);
+		addBackpack(backpack, monsterItem);
+	}	
 
 	void Room::shop(Character& Player, Character backpack[10]){
 		cout << endl << "Welcome to the shop!" << endl;

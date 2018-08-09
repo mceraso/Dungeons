@@ -6,6 +6,7 @@ public:
 	Character();
 	string name;
 	string description;
+	bool isKey;
 	int attack;
 	int defense;
 	int health;
@@ -25,9 +26,12 @@ public:
 	string description;
 	void describeRoom();
 	bool blockBool;
+	Character openWith;
 
 	bool battleBool;
 	Character Monster;
+	bool monsterItemBool;
+	Character monsterItem;
 	bool shopBool;
 	Character shopGoods[3];
 	bool chestBool;
@@ -39,6 +43,7 @@ public:
 	void battle(Character&, Character equipped[3]);
 	void shop(Character&, Character backpack[10]);
 	void chest(Character&, Character backpack[10]);
+	void monsterDrop(Character&, Character backpack[10]);
 
 	~Room(){
 	}
