@@ -24,6 +24,7 @@ int main(){
 	Player.speed = 5;
 	Player.gold = 15;
 	Character backpack[10];
+	Character keyItems[10];
 	Character equipped[3];
 
 	//Define Item Characters
@@ -200,7 +201,7 @@ int main(){
 	Room cave_chamber;
 	cave_chamber.name = "the cave's main chamber";
 	cave_chamber.description = "You see a glorious, golden chest.";
-	cave_chamber.blockBool = true;
+	cave_chamber.lockBool = true;
 	cave_chamber.openWith = key;
 	cave_chamber.chestBool = true;
 	cave_chamber.chestItem = glory;
@@ -262,20 +263,25 @@ int main(){
 	do {
 		//cout << x << y << endl; //debugging location problems
 		matrix[x][y].describeRoom();
-		if (matrix[x-1][y].blockBool == true){
-			cout << "The door to the North is locked\n";
+		if (x > 0){
+			if (matrix[x-1][y].lockBool == true){
+				cout << "The door to the North is locked\n";
+			}
 		}
-
-		if (matrix[x+1][y].blockBool == true){
-			cout << "The door to the South is locked\n";
+		if (x < xMax - 1){
+			if (matrix[x+1][y].lockBool == true){
+				cout << "The door to the South is locked\n";
+			}
 		}
-
-		if (matrix[x][y+1].blockBool == true){
-			cout << "The door to the East is locked\n";
+		if (y < yMax - 1){
+			if (matrix[x][y+1].lockBool == true){
+				cout << "The door to the East is locked\n";
+			}
 		}
-
-		if (matrix[x][y-1].blockBool == true){
-			cout << "The door to the West is locked\n";
+		if (y > 0){
+			if (matrix[x][y-1].lockBool == true){
+				cout << "The door to the West is locked\n";
+			}
 		}
 
 		if (matrix[x][y].battleBool == true){
@@ -306,28 +312,28 @@ int main(){
 		for (int i = 0; i < 10; i++){
 			if (backpack[i].name == matrix[x-1][y].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the North!" << endl;
-				matrix[x-1][y].blockBool = false;
+				matrix[x-1][y].lockBool = false;
 				Character blank;
 				backpack[i] = blank;
 				break;
 			}
 			if (backpack[i].name == matrix[x+1][y].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the South!" << endl;
-				matrix[x+1][y].blockBool = false;
+				matrix[x+1][y].lockBool = false;
 				Character blank;
 				backpack[i] = blank;
 				break;
 			}
 			if (backpack[i].name == matrix[x][y+1].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the East!" << endl;
-				matrix[x][y+1].blockBool = false;
+				matrix[x][y+1].lockBool = false;
 				Character blank;
 				backpack[i] = blank;
 				break;
 			}
 			if (backpack[i].name == matrix[x][y-1].openWith.name) {
 				cout << "You used your " << backpack[i].name << " and opened the door to the West!" << endl;
-				matrix[x][y-1].blockBool = false;
+				matrix[x][y-1].lockBool = false;
 				Character blank;
 				backpack[i] = blank;
 				break;
@@ -364,22 +370,22 @@ int main(){
 
 		cout << "Where do you go?" << endl;
 		if (x > 0){
-			if (matrix[x-1][y].blockBool == false){
+			if (matrix[x-1][y].blockBool == false and matrix[x-1][y].lockBool == false){
 				cout << "North ";
 			}
 		}
 		if (x < xMax - 1){
-			if (matrix[x+1][y].blockBool == false){
+			if (matrix[x+1][y].blockBool == false and matrix[x+1][y].lockBool == false){
 				cout << "South ";
 			}
 		}
 		if (y < yMax - 1){
-			if (matrix[x][y+1].blockBool == false){
+			if (matrix[x][y+1].blockBool == false and matrix[x][y+1].lockBool == false){
 				cout << "East ";
 			}
 		}
-		if (y > 0 ){
-			if (matrix[x][y-1].blockBool == false){
+		if (y > 0){
+			if (matrix[x][y-1].blockBool == false and matrix[x][y-1].lockBool == false){
 				cout << "West ";
 			}
 		}
@@ -391,7 +397,7 @@ int main(){
 
 		if (i == "North"){
 			if (x > 0){
-				if (matrix[x-1][y].blockBool == false){
+				if (matrix[x-1][y].blockBool == false and matrix[x-1][y].lockBool == false){
 					x -= 1;
 				}
 			}
@@ -401,7 +407,7 @@ int main(){
 		}
 		else if (i == "South"){
 			if (x < xMax - 1){
-				if (matrix[x+1][y].blockBool == false){
+				if (matrix[x+1][y].blockBool == false and matrix[x+1][y].lockBool == false){
 					x += 1;
 				}
 			}
@@ -411,7 +417,7 @@ int main(){
 		}		
 		else if (i == "East"){
 			if (y < yMax - 1){
-				if (matrix[x][y+1].blockBool == false){
+				if (matrix[x][y+1].blockBool == false and matrix[x][y+1].lockBool == false){
 					y += 1;
 				}
 			}
@@ -421,7 +427,7 @@ int main(){
 		}
 		else if (i == "West"){
 			if (y > 0 ){
-				if (matrix[x][y-1].blockBool == false){
+				if (matrix[x][y-1].blockBool == false and matrix[x][y-1].lockBool == false){
 					y -= 1;
 				}
 			}

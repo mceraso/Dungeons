@@ -26,6 +26,7 @@ public:
 	string description;
 	void describeRoom();
 	bool blockBool;
+	bool lockBool;
 	Character openWith;
 
 	bool battleBool;

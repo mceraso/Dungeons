@@ -18,6 +18,7 @@ using namespace std;
 		shopBool = false;
 		chestBool = false;
 		blockBool = false;
+		lockBool = false;
 		portalBool = false;
 		openWith.name = "Open";
 	}
