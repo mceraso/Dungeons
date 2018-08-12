@@ -138,6 +138,10 @@ using namespace std;
 		Player.gold = Player.gold - item.gold;
 		}
 
+		if (item.isKey == true){
+			return;
+		}
+
 		cout << "When equipped, " << endl;
 		if (item.attack < 0){
 			cout << "Attack is decreased by " << item.attack << "." << endl;
@@ -276,6 +280,10 @@ using namespace std;
 
 		for (int i = 0; i < 10; i++){
 			if (a == backpack[i].name){
+				if (backpack[i].isKey == true){
+					cout << "You cannot throw away a key item!" << endl;
+					return;
+				}
 				backpack[i] = blank;
 				cout << "You threw away " << a << "!" << endl;
 				return;
@@ -307,6 +315,10 @@ using namespace std;
 
 		for (int i = 0; i < 10; i++){
 			if (a == backpack[i].name){
+				if (backpack[i].isKey == true){
+					cout << "You cannot equip a key item!" << endl;
+					return;
+				}
 				Character e = backpack[i];
 				for (int i = 0; i < 3; i++){
 					if (equipped[i].name == "empty"){

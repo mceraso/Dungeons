@@ -24,7 +24,6 @@ int main(){
 	Player.speed = 5;
 	Player.gold = 15;
 	Character backpack[10];
-	Character keyItems[10];
 	Character equipped[3];
 
 	//Define Item Characters
