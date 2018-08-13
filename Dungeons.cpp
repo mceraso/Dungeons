@@ -1,6 +1,4 @@
-#include <iostream>
 #include "Dungeons.h"
-using namespace std;
 
 	Character::Character(){
 		name = "empty";
@@ -41,8 +39,12 @@ using namespace std;
 			eD += equipped[n].defense;
 			eS += equipped[n].speed;
 			eH += equipped[n].health;
-
 		}
+		//define attack and run vector navigation
+		static const string attackArr[] = {"Attack", "attack", "A", "a"};
+		static const string runArr[] = {"Run", "run", "R", "r"};
+    	vector<string> attack (attackArr, end(attackArr));
+    	vector<string> run (runArr, end(runArr));
 
 		int x = 0;
 		while (x == 0){
@@ -68,7 +70,7 @@ using namespace std;
 			getline(cin, i);
 			cout << "----------------------------------------------------" << endl;
 
-			if (i == "Run"){
+			if (find(run.begin(), run.end(), i) != run.end()){
 
    				srand(time(NULL));
     			int number = rand() % 100 + 1;  //Generate random number 1 to 100
@@ -83,7 +85,7 @@ using namespace std;
           		}
 			}
 
-			else if (i == "Attack"){
+			else if (find(attack.begin(), attack.end(), i) != attack.end()){
 				cout << "You attacked the " << Monster.name << "!" << endl;
 				int netA = eA - Monster.defense;
 				if (netA <= 0){

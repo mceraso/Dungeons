@@ -1,6 +1,5 @@
-#include <iostream>
+#include <vector>
 #include "Dungeons.cpp"
-using namespace std;
 
 int main(){
 
@@ -14,6 +13,27 @@ int main(){
 	cout << "----------------------------------------------------" << endl;
 
 	cout << "You wake up in your room to the sound of screaming townspeople.\nYou are brave and head out." << endl << endl;
+
+	//Define Navigaton Vectors
+	static const string northArr[] = {"North", "north", "N", "n"};
+	static const string southArr[] = {"South", "south", "S", "s"};
+	static const string eastArr[] = {"East", "east", "E", "e"};
+	static const string westArr[] = {"West", "west", "W", "w"};
+
+	static const string equipArr[] = {"Equip", "equip", "Eq", "eq"};
+	static const string unequipArr[] = {"Unequip", "unequip", "U", "u"};
+	static const string throwawayArr[] = {"Throwaway", "throwaway", "T", "t"};
+	static const string yesArr[] = {"Yes", "yes", "Y", "y"};
+
+    vector<string> north (northArr, end(northArr));
+    vector<string> south (southArr, end(southArr));
+    vector<string> east (eastArr, end(eastArr));
+    vector<string> west (westArr, end(westArr));
+
+    vector<string> equip (equipArr, end(equipArr));
+    vector<string> unequip (unequipArr, end(unequipArr));
+    vector<string> throwaway (throwawayArr, end(throwawayArr));
+    vector<string> yes (yesArr, end(yesArr));
 
 	//Define Player Character
 	Character Player;
@@ -355,7 +375,7 @@ int main(){
 			getline(cin, i);
 			cout << "----------------------------------------------------" << endl;
 
-			if (i == "Yes"){
+			if (find(yes.begin(), yes.end(), i) != yes.end()){
 				int a = matrix[x][y].portalX;
 				int b = matrix[x][y].portalY;
 				x = a;
@@ -394,7 +414,7 @@ int main(){
 		getline(cin, i);
 		cout << "----------------------------------------------------" << endl;			
 
-		if (i == "North"){
+		if (find(north.begin(), north.end(), i) != north.end()){
 			if (x > 0){
 				if (matrix[x-1][y].blockBool == false and matrix[x-1][y].lockBool == false){
 					x -= 1;
@@ -404,7 +424,7 @@ int main(){
 				cout << "Enter a supported choice!" << endl;
 			}
 		}
-		else if (i == "South"){
+		else if (find(south.begin(), south.end(), i) != south.end()){
 			if (x < xMax - 1){
 				if (matrix[x+1][y].blockBool == false and matrix[x+1][y].lockBool == false){
 					x += 1;
@@ -414,7 +434,7 @@ int main(){
 				cout << "Enter a supported choice!" << endl;
 			}
 		}		
-		else if (i == "East"){
+		else if (find(east.begin(), east.end(), i) != east.end()){
 			if (y < yMax - 1){
 				if (matrix[x][y+1].blockBool == false and matrix[x][y+1].lockBool == false){
 					y += 1;
@@ -424,8 +444,8 @@ int main(){
 				cout << "Enter a supported choice!" << endl;
 			}
 		}
-		else if (i == "West"){
-			if (y > 0 ){
+		else if (find(west.begin(), west.end(), i) != west.end()){
+			if (y > 0){
 				if (matrix[x][y-1].blockBool == false and matrix[x][y-1].lockBool == false){
 					y -= 1;
 				}
@@ -435,13 +455,13 @@ int main(){
 			}
 		}
 					
-		else if (i == "Equip"){
+		else if (find(equip.begin(), equip.end(), i) != equip.end()){
 			addEquipped(backpack, equipped);
 		}
-		else if (i == "Unequip"){
+		else if (find(unequip.begin(), unequip.end(), i) != unequip.end()){
 			deleteEquipped(equipped);
 		}
-		else if (i == "Throwaway"){
+		else if (find(throwaway.begin(), throwaway.end(), i) != throwaway.end()){
 			deleteBackpack(backpack);
 		}			  
 		else {
