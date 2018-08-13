@@ -7,10 +7,12 @@ Teaching myself cpp with a text adventure. Development has stopped in order to p
 * [x] Player experiences a more dynamic map with tunnels. The map is no longer just an n x n grid and can be molded into any configuration
 * [x] Player can acquire items by killing monsters. Monsters drop items. 8.9.18
 * [x] Player can unlock doors with consummable keys in their backpack. 8.9.18
+* [x] Player can type shortcuts for North, South, East, West, Equip, Unequip, Throwaway, Attack, and Run
 
 # 8.6.18: Things Learned:
 * [x] using continue to skip the rest of a while loop iteration after meeting a certain condition
 * [x] using Booleans to control navigation, shops, battles, chests, and portals in each room
+* [x] using std::vector<string> and find() to check if input is an accepted shortcut for an available command
 
 # Player Stories completed before first commit:
 * [x] Player inputs their name at start; name is used for dialogoue throughout
@@ -57,9 +59,9 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [] Player can check item stats before purchase
 
-* [] Player is restricted access to certain Rooms until after acquiring a certain Item
+* [x] Player is restricted access to certain Rooms until after acquiring a certain Item
 
-* [] Player is able to obtain a backpack with unlimited capacity
+* [] Player is able to obtain a backpack with unlimited capacity (vector backpack)
 
 # Things Learned:
 * [x] while-if control loops to keep player from inputting unsupported choices
@@ -80,7 +82,7 @@ Attacks affect Player and Monster health with an algorithm taking into account A
 
 * [x] randomness in battle event: https://stackoverflow.com/questions/23055585/program-with-probability
 
-* [] vectors (unlimited capacity backpack)
+* [x] vectors (simplified navigation)
 
 * [] array.fill() and array.swap() (monster attack dynamics)
 
