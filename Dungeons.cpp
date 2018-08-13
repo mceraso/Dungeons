@@ -207,44 +207,47 @@
 		Character item2 = shopGoods[1];
 		Character item3 = shopGoods[2];
 
+		static const string nothingArr[] = {"Nothing", "nothing", "No", "no", "N", "n"};
+    	vector<string> nothing (nothingArr, end(nothingArr));
+
 		int x = 0;
 		while (x == 0){
 			cout << "What would you like?" << endl;
-			cout << item1.name << " for " << item1.gold << " Gold" << endl;
-			cout << item2.name << " for " << item2.gold << " Gold" << endl;
-			cout << item3.name << " for " << item3.gold << " Gold" << endl;
+			cout << "1. " << item1.name << " for " << item1.gold << " Gold" << endl;
+			cout << "2. " << item2.name << " for " << item2.gold << " Gold" << endl;
+			cout << "3. " << item3.name << " for " << item3.gold << " Gold" << endl;
 			cout << "Nothing" << endl;
 
 			string a;
 			getline(cin, a);
 			cout << "----------------------------------------------------" << endl;			
 
-			for (int i = 0; i < 3; i++){
-				if (a == backpack[i].name){
+			for (int i = 0; i < 10; i++){
+				if (shopGoods[stoi(a)-1].name == backpack[i].name){
 					cout << "You already have that!" << endl;
 					return;
 				}
 			}
 
-			if (a == item1.name) {
+			if (a == "1") {
 				playerGot(Player, item1);
 				addBackpack(backpack, item1);
 				cout << "Thank you for your purchase!" << endl << endl;
 				break;
 			}
-			else if (a == item2.name) {
+			else if (a == "2") {
 				playerGot(Player, item2);
 				addBackpack(backpack, item2);
 				cout << "Thank you for your purchase!" << endl << endl;
 				break;
 			}
-			else if (a == item3.name) {
+			else if (a == "3") {
 				playerGot(Player, item3);
 				addBackpack(backpack, item3);
 				cout << "Thank you for your purchase!" << endl << endl;
 				break;
 			}
-			else if (a == "Nothing"){
+			else if (find(nothing.begin(), nothing.end(), a) != nothing.end()){
 				cout << "Thank you!" << endl << endl;
 				break;
 			}										
@@ -268,6 +271,7 @@
 	void deleteBackpack(Character backpack[10]){
 		cout << "What would you like to throwaway?" << endl;
 		for (int i = 0; i < 10; i++){
+			cout << i+1 << ". ";
 			if (backpack[i].name == "empty"){
 				cout << "-empty slot-" << endl;
 			}
@@ -281,7 +285,7 @@
 		Character blank;
 
 		for (int i = 0; i < 10; i++){
-			if (a == backpack[i].name){
+			if (backpack[stoi(a)-1].name == backpack[i].name){
 				if (backpack[i].isKey == true){
 					cout << "You cannot throw away a key item!" << endl;
 					return;
@@ -297,6 +301,7 @@
 	void addEquipped(Character backpack[10], Character equipped[3]){
 		cout << "What would you like to equip?" << endl;
 		for (int i = 0; i < 10; i++){
+			cout << i+1 << ". ";
 			if (backpack[i].name == "empty"){
 				cout << "-empty slot-" << endl;
 			}
@@ -309,14 +314,14 @@
 		cout << "----------------------------------------------------" << endl;			
 
 		for (int i = 0; i < 3; i++){
-			if (a == equipped[i].name){
+			if (backpack[stoi(a)-1].name == equipped[i].name){
 				cout << "That's already equipped!" << endl;
 				return;
 			}
 		}
 
 		for (int i = 0; i < 10; i++){
-			if (a == backpack[i].name){
+			if (backpack[stoi(a)-1].name == backpack[i].name){
 				if (backpack[i].isKey == true){
 					cout << "You cannot equip a key item!" << endl;
 					return;
@@ -325,7 +330,7 @@
 				for (int i = 0; i < 3; i++){
 					if (equipped[i].name == "empty"){
 						equipped[i] = e;
-						cout << "You equipped " << a << "!" << endl;
+						cout << "You equipped " << backpack[i].name << "!" << endl;
 						return;
 					}
 				}
@@ -339,6 +344,7 @@
 	void deleteEquipped(Character equipped[3]){
 		cout << "What would you like to unequip?" << endl;
 		for (int i = 0; i < 3; i++){
+			cout << i+1 << ". ";
 			if (equipped[i].name == "empty"){
 				cout << "-empty slot-" << endl;
 			}
@@ -352,9 +358,9 @@
 		Character blank;
 
 		for (int i = 0; i < 3; i++){
-			if (a == equipped[i].name){
+			if (equipped[stoi(a)-1].name == equipped[i].name){
 				equipped[i] = blank;
-				cout << "You unequiped " << a << "!" << endl;
+				cout << "You unequiped " << equipped[i].name << "!" << endl;
 				return;
 			}
 		}	
